@@ -49,4 +49,22 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(1, 3001)
     assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(12, 1799)
   end
+
+  def test_6_number_of_days_in_month_not_February
+    assert_equal 31, Cal.number_of_days_in_month(1, 2012)
+    assert_equal 31, Cal.number_of_days_in_month(3, 2012)
+    assert_equal 30, Cal.number_of_days_in_month(4, 2012)
+    assert_equal 31, Cal.number_of_days_in_month(5, 2012)
+    assert_equal 30, Cal.number_of_days_in_month(6, 2012)
+    assert_equal 31, Cal.number_of_days_in_month(7, 2012)
+    assert_equal 31, Cal.number_of_days_in_month(8, 2012)
+    assert_equal 30, Cal.number_of_days_in_month(9, 2012)
+    assert_equal 31, Cal.number_of_days_in_month(10, 2012)
+    assert_equal 30, Cal.number_of_days_in_month(11, 2012)
+    assert_equal 31, Cal.number_of_days_in_month(12, 2012)
+  end
+
+  def test_7_number_of_days_in_month_February
+  end
+
 end

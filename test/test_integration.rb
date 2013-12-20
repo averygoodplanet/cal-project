@@ -10,7 +10,6 @@ class TestIntegration < MiniTest::Unit::TestCase
 # *** NOTE: the name of program file tested
 # is below in IO.popen('ruby program_file.rb' ...)...
 
-
 ## ****Example Unit Test on ./program_file.rb
 #   def test_a_name_with_no_vowels
 #     shell_output = ""

@@ -39,7 +39,14 @@ class Cal
     end
   end
 
-  def number_of_days_in_month(month, year)
+  def self.number_of_days_in_month(month, year)
+    # the days in a month are determined solely by the month, except for February which changes in leap year
+    month_days_hash = { 1 => 31, 2 => "February", 3 => 31, 4 => 30, 5 => 31, 6 => 30, 7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31}
+    this_month_number_days = month_days_hash[month]
+
+    #deal with February
+
+    # return number of days in this month-year
   end
 
   def number_of_rows_in_month(first_day_of_month, number_of_days_in_month)
