@@ -321,32 +321,105 @@ class TestIntegration < MiniTest::Unit::TestCase
 #   assert_equal expected_output, shell_output.lines[3].chomp
 # end
 
-def test_int17_yr_2000_line5
+# def test_int17_yr_2000_line5
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "                   1         1  2  3  4  5            1  2  3  4"
+#   assert_equal expected_output, shell_output.lines[4].chomp
+# end
+
+# def test_int17b_that_int17_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "                   1         1  2  3  4  5            1  2  3  4"
+#   assert_equal expected_output, shell_output.lines[4].chomp
+# end
+
+# def test_int18_yr_2000_line9
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "23 24 25 26 27 28 29  27 28 29              26 27 28 29 30 31"
+#   assert_equal expected_output, shell_output.lines[8].chomp
+# end
+
+# def test_int18b_that_int18_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "23 24 25 26 27 28 29  27 28 29              26 27 28 29 30 31"
+#   assert_equal expected_output, shell_output.lines[8].chomp
+# end
+
+# def test_int19_yr_2000_line10
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "30 31"
+#   assert_equal expected_output, shell_output.lines[9].chomp
+# end
+
+# def test_int19b_that_int19_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "30 31                                       "
+#   assert_equal expected_output, shell_output.lines[9].chomp
+# end
+
+# def test_int20_yr_2000_line11
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "       April                  May                   June"
+#   assert_equal expected_output, shell_output.lines[10].chomp
+# end
+
+# def test_int20b_that_int20_matches_Unix_cal
+#     shell_output = ""
+#     command_to_run = "cal 2000"
+#     IO.popen(command_to_run, 'r+') do |pipe|
+#       shell_output = pipe.read.chomp
+#     end
+#     expected_output = "       April                  May                   June"
+#     assert_equal expected_output, shell_output.lines[10].chomp
+# end
+
+def test_int21_yr_2000_line34
   shell_output = ""
   command_to_run = "ruby cal.rb 2000"
   IO.popen(command_to_run, 'r+') do |pipe|
     shell_output = pipe.read.chomp
   end
-  expected_output = "                   1         1  2  3  4  5            1  2  3  4"
-  assert_equal expected_output, shell_output.lines[4].chomp
+  expected_output = "                                            31"
+  assert_equal expected_output, shell_output.lines[33].chomp
 end
 
-def test_int17b_that_int17_matches_Unix_cal
+def test_int21b_that_int21_matches_Unix_cal
   shell_output = ""
   command_to_run = "cal 2000"
   IO.popen(command_to_run, 'r+') do |pipe|
     shell_output = pipe.read.chomp
   end
-  expected_output = "                   1         1  2  3  4  5            1  2  3  4"
-  assert_equal expected_output, shell_output.lines[4].chomp
+  expected_output = "                                            31"
+  assert_equal expected_output, shell_output.lines[33].chomp
 end
-
-def test_int18_yr_2000_line6
-end
-
-def test_int18b_that_int18_matches_Unix_cal
-end
-
 ## ****Example Unit Test on ./program_file.rb
 #   def test_a_name_with_no_vowels
 #     shell_output = ""
