@@ -38,4 +38,22 @@ class Cal
       raise Error, "Specify result_format in call to Cal.zeller"
     end
   end
+
+  def number_of_days_in_month(month, year)
+  end
+
+  def number_of_rows_in_month(first_day_of_month, number_of_days_in_month)
+  end
+
+  def create_month_header_string(month, year, month_xor_year_display)
+  end
+
+  def make_date_rows(month, year)
+  end
+
+  def display_one_month(month, year)
+  end
+
+  def display_year(year)
+  end
 end
