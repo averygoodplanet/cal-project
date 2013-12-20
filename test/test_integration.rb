@@ -10,6 +10,17 @@ class TestIntegration < MiniTest::Unit::TestCase
 # *** NOTE: the name of program file tested
 # is below in IO.popen('ruby program_file.rb' ...)...
 
+# an example test
+def test_int1_puts_month_year_args
+  shell_output = ""
+  command_to_run = "ruby cal.rb 1 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read.chomp
+  end
+  expected_output = "1 2012"
+  assert_equal expected_output, shell_output
+end
+
 ## ****Example Unit Test on ./program_file.rb
 #   def test_a_name_with_no_vowels
 #     shell_output = ""
