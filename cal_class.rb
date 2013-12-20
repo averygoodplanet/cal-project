@@ -52,6 +52,9 @@ class Cal
 
     month_header_string = leading_whitespace + month_space_year
     puts month_header_string
+
+    weekday_names_row = "Su Mo Tu We Th Fr Sa"
+    puts weekday_names_row
   end
 
   def self.get_month_name(month_number)
@@ -77,9 +80,6 @@ class Cal
 #   end
 
 #   def make_date_rows(month, year)
-#   end
-
-#   def display_one_month(month, year)
 #   end
 
 #   def display_year(year)

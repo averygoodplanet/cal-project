@@ -29,7 +29,7 @@ class TestIntegration < MiniTest::Unit::TestCase
       shell_output = pipe.read.chomp
     end
     expected_output = "    January 2012"
-    assert_equal expected_output, shell_output.chomp
+    assert_equal expected_output, shell_output.lines[0].chomp
   end
 
   def test_int2b_puts_Jan_2012_header_test_matches_Unix_cal
@@ -49,25 +49,25 @@ class TestIntegration < MiniTest::Unit::TestCase
   #   puts `cal #{month} #{year}`
   # end
 
-#   def test_int3_puts_Jan_2012_days_name_row
-#     shell_output = ""
-#     command_to_run = "ruby cal.rb 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read
-#     end
-#     expected_output = "Su Mo Tu We Th Fr Sa"
-#     assert_equal expected_output, shell_output.lines[1].chomp
-#   end
+  def test_int3_puts_Jan_2012_days_name_row
+    shell_output = ""
+    command_to_run = "ruby cal.rb 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = "Su Mo Tu We Th Fr Sa"
+    assert_equal expected_output, shell_output.lines[1].chomp
+  end
 
-#   def test_int3b_that_int3_matches_Unix_cal
-#     shell_output = ""
-#     command_to_run = "cal 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read
-#     end
-#     expected_output = "Su Mo Tu We Th Fr Sa"
-#     assert_equal expected_output, shell_output.lines[1].chomp
-#   end
+  def test_int3b_that_int3_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = "Su Mo Tu We Th Fr Sa"
+    assert_equal expected_output, shell_output.lines[1].chomp
+  end
 
 #   def test_int4_puts_Jan_2012_week_1
 #     shell_output = ""
