@@ -56,6 +56,13 @@ class Cal
     weekday_names_row = "Su Mo Tu We Th Fr Sa"
     puts weekday_names_row
 
+    # get zeller to determine which day of week month starts on
+    first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
+    # construct first row (account for day of week starting on, leading white spaces )
+    # will probably have to account for 1space-singledigit-1space, vs. doubledigit-1space
+    # construct middle rows (account for next start day...)
+    # construct last row (account for number of days in month e.g. 28, 29, 30, 31)
+
     week_rows = []
     week_rows[0] = " 1  2  3  4  5  6  7"
     week_rows[1] = " 8  9 10 11 12 13 14"
@@ -120,17 +127,4 @@ class Cal
       end
     end
   end
-
-# #may be unnecessary
-#   def number_of_rows_in_month(first_day_of_month, number_of_days_in_month)
-#   end
-
-#   def create_month_header_string(month, year, month_xor_year_display)
-#   end
-
-#   def make_date_rows(month, year)
-#   end
-
-#   def display_year(year)
-#   end
 end

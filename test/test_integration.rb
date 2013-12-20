@@ -233,85 +233,30 @@ def test_int11_other_Sunday_month_30_days
   assert_equal "29 30", shell_output.lines[6].chomp
 end
 
-# def test_int9_puts_Feb_2000_header
-#   shell_output = ""
-#   command_to_run = "ruby cal.rb 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "   February 2000"
-#   assert_equal expected_output, shell_output.lines[0].chomp
+def test_int12_nonSunday_start_28_days
+  shell_output = ""
+  command_to_run = "ruby cal.rb 2 1900"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "   February 1900", shell_output.lines[0].chomp
+  assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
+  assert_equal "             1  2  3", shell_output.lines[2].chomp
+  assert_equal " 4  5  6  7  8  9 10", shell_output.lines[3].chomp
+  assert_equal "11 12 13 14 15 16 17", shell_output.lines[4].chomp
+  assert_equal "18 19 20 21 22 23 24", shell_output.lines[5].chomp
+  assert_equal "25 26 27 28", shell_output.lines[6].chomp
+end
+
+# def test_int13_nonSunday_start_29_days
 # end
 
-# def test_int9b_that_int9_matches_Unix_cal
-#   shell_output = ""
-#   command_to_run = "cal 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "   February 2000"
-#   assert_equal expected_output, shell_output.lines[0].chomp
+# def test_int14_nonSunday_start_30_days
 # end
 
-# def test_int10_puts_Feb_2000_days_name_row
-#   shell_output = ""
-#   command_to_run = "ruby cal.rb 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "Su Mo Tu We Th Fr Sa"
-#   assert_equal expected_output, shell_output.lines[1].chomp
+# def  test_int15_nonSunday_start_31_days
 # end
 
-# def test_int10b_that_int10_matches_Unix_cal
-#   shell_output = ""
-#   command_to_run = "cal 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "Su Mo Tu We Th Fr Sa"
-#   assert_equal expected_output, shell_output.lines[1].chomp
-# end
-
-# def test_int11_puts_Feb_2000_week_1
-#   shell_output = ""
-#   command_to_run = "ruby cal.rb 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "       1  2  3  4  5"
-#   assert_equal expected_output, shell_output.lines[2].chomp
-# end
-
-# def test_int11b_that_int11_matches_Unix_cal
-#   shell_output = ""
-#   command_to_run = "cal 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "       1  2  3  4  5"
-#   assert_equal expected_output, shell_output.lines[2].chomp
-# end
-
-# def test_int12_puts_Feb_2000_week_5
-#   shell_output = ""
-#   command_to_run = "ruby cal.rb 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "27 28 29"
-#   assert_equal expected_output, shell_output.lines[6].chomp
-# end
-
-# def test_int12b_that_int12_matches_Unix_cal
-#   shell_output = ""
-#   command_to_run = "cal 2 2000"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read.chomp
-#   end
-#   expected_output = "27 28 29"
-#   assert_equal expected_output, shell_output.lines[6].chomp
-# end
 
 # def test_int13_yr_2000_line1
 #   shell_output = ""
