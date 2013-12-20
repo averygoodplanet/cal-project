@@ -86,6 +86,11 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal false, Cal.leap_year?(1891)
   end
 
-  # def test_8_number_of_days_in_month_February
-  # end
+  def test_9_number_of_days_in_month_February
+    assert_equal 29, Cal.number_of_days_in_month(2, 2000)
+    assert_equal 28, Cal.number_of_days_in_month(2, 2001)
+    assert_equal 29, Cal.number_of_days_in_month(2, 2004)
+    assert_equal 28, Cal.number_of_days_in_month(2, 1900)
+    assert_equal 28, Cal.number_of_days_in_month(2, 2005)
+  end
 end
