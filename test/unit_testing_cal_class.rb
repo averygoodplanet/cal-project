@@ -64,6 +64,10 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal 31, Cal.number_of_days_in_month(12, 2012)
   end
 
+  def test_7_get_month_name
+    assert_equal "January", Cal.get_month_name(1)
+  end
+
   # def test_7_determine_leap_year
   # end
 

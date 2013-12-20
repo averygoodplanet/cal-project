@@ -5,6 +5,7 @@
 
 # helper.rb includes helper functions
 require_relative 'helper'
+require File.expand_path("./cal_class.rb")
 
 class TestIntegration < MiniTest::Unit::TestCase
 # *** NOTE: the name of program file tested
@@ -21,25 +22,32 @@ class TestIntegration < MiniTest::Unit::TestCase
 #   assert_equal expected_output, shell_output
 # end
 
-#   def test_int2_puts_Jan_2012_header
-#     shell_output = ""
-#     command_to_run = "ruby cal.rb 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read.chomp
-#     end
-#     expected_output = "    January 2012"
-#     assert_equal expected_output, shell_output.lines[0].chomp
-#   end
+  def test_int2_puts_Jan_2012_header
+    shell_output = ""
+    command_to_run = "ruby cal.rb 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read.chomp
+    end
+    expected_output = "    January 2012"
+    assert_equal expected_output, shell_output.chomp
+  end
 
-#   def test_int2b_puts_Jan_2012_header_test_matches_Unix_cal
-#     shell_output = ""
-#     command_to_run = "cal 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read
-#     end
-#     expected_output = "    January 2012"
-#     assert_equal expected_output, shell_output.lines[0].chomp
-#   end
+  def test_int2b_puts_Jan_2012_header_test_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = "    January 2012"
+    assert_equal expected_output, shell_output.lines[0].chomp
+  end
+
+  # def test_int2c_manual_spot_check
+  #   year = 2012
+  #   month = gets.chomp.to_i
+  #   Cal.display_month(month, year)
+  #   puts `cal #{month} #{year}`
+  # end
 
 #   def test_int3_puts_Jan_2012_days_name_row
 #     shell_output = ""
@@ -401,25 +409,26 @@ class TestIntegration < MiniTest::Unit::TestCase
 #     assert_equal expected_output, shell_output.lines[10].chomp
 # end
 
-def test_int21_yr_2000_line34
-  shell_output = ""
-  command_to_run = "ruby cal.rb 2000"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read.chomp
-  end
-  expected_output = "                                            31"
-  assert_equal expected_output, shell_output.lines[33].chomp
-end
+# def test_int21_yr_2000_line34
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "                                            31"
+#   assert_equal expected_output, shell_output.lines[33].chomp
+# end
 
-def test_int21b_that_int21_matches_Unix_cal
-  shell_output = ""
-  command_to_run = "cal 2000"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read.chomp
-  end
-  expected_output = "                                            31"
-  assert_equal expected_output, shell_output.lines[33].chomp
-end
+# def test_int21b_that_int21_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "                                            31"
+#   assert_equal expected_output, shell_output.lines[33].chomp
+# end
+
 ## ****Example Unit Test on ./program_file.rb
 #   def test_a_name_with_no_vowels
 #     shell_output = ""
