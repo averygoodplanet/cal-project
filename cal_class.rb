@@ -4,4 +4,9 @@
 class Cal
   # def initialize
   # end
+  def get_Zeller(month, year)
+
+
+    #return day-of-week the month starts on
+  end
 end
