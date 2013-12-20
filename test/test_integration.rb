@@ -21,6 +21,45 @@ def test_int1_puts_month_year_args
   assert_equal expected_output, shell_output
 end
 
+  def test_int2_puts_single_month_header
+    shell_output = ""
+    command_to_run = "ruby cal.rb 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read.chomp
+    end
+    expected_output = "    January 2012"
+    assert_equal expected_output, shell_output
+  end
+
+  def test_int2b_puts_single_month_header_test_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = "    January 2012"
+    assert_equal expected_output, shell_output.lines[0].chomp
+  end
+
+  def test_int3_puts_single_month_days_name_row
+    shell_output = ""
+    command_to_run = "ruby cal.rb 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = "Su Mo Tu We Th Fr Sa"
+    assert_equal expected_output, shell_output.lines[1].chomp
+  end
+
+  def test_int3b_that_int3_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = "Su Mo Tu We Th Fr Sa"
+    assert_equal expected_output, shell_output.lines[1].chomp
+  end
 ## ****Example Unit Test on ./program_file.rb
 #   def test_a_name_with_no_vowels
 #     shell_output = ""
