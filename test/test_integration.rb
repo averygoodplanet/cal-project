@@ -17,7 +17,7 @@ class TestIntegration < MiniTest::Unit::TestCase
 #     # the from IO.popen... to first "end" is the test
 #     # simulating the person typing entering "brt"
 #     # on name = gets.chomp
-#     IO.popen('ruby program_file.rb', 'r+') do |pipe|
+#     IO.popen('ruby cal.rb', 'r+') do |pipe|
 #       pipe.puts("brt")
 #       pipe.close_write
 #       shell_output = pipe.read
