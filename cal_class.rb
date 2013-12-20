@@ -73,15 +73,38 @@ class Cal
     month_name_hash[month_number]
   end
 
-  # def self.number_of_days_in_month(month, year)
-  #   # the days in a month are determined solely by the month, except for February which changes in leap year
-  #   month_days_hash = { 1 => 31, 2 => "February", 3 => 31, 4 => 30, 5 => 31, 6 => 30, 7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31}
-  #   this_month_number_days = month_days_hash[month]
+  def self.leap_year?(year)
+    if year % 4 == 0
+      if year % 100 == 0
+        if year % 400 == 0
+          # century years which are multiples of 400
+          # e.g. 1600, 2000, are leap years
+          return true
+        else
+          # century years which aren't multiples of 400
+          # aren't leap years (e.g. 1700, 1800, 1900)
+          return false
+        end
+      else
+        # a year that is divisible by 4 and isn't a century year
+        # is a leap year
+        return true
+      end
+    else
+      # a year that isn't a multiple of 4 isn't a leap year
+      return false
+    end
+  end
 
-  #   #deal with February
+  def self.number_of_days_in_month(month, year)
+    # the days in a month are determined solely by the month, except for February which changes in leap year
+    month_days_hash = { 1 => 31, 2 => "February", 3 => 31, 4 => 30, 5 => 31, 6 => 30, 7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31}
+    this_month_number_days = month_days_hash[month]
 
-  #   # return number of days in this month-year
-  # end
+    #deal with February
+
+    # return number of days in this month-year
+  end
 
 # #may be unnecessary
 #   def number_of_rows_in_month(first_day_of_month, number_of_days_in_month)

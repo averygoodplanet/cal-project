@@ -68,8 +68,23 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal "January", Cal.get_month_name(1)
   end
 
-  # def test_7_determine_leap_year
-  # end
+  def test_8_leap_year_checks
+    # check century years that aren't multiples of 400
+    assert_equal false, Cal.leap_year?(1700)
+    assert_equal false, Cal.leap_year?(1800)
+    assert_equal false, Cal.leap_year?(1900)
+    # check century years that are multiples of 400
+    assert_equal true, Cal.leap_year?(1600)
+    assert_equal true, Cal.leap_year?(2000)
+    #  check non-century years that are multiples of 4
+    assert_equal true, Cal.leap_year?(1984)
+    assert_equal true, Cal.leap_year?(1904)
+    assert_equal true, Cal.leap_year?(1964)
+    # check non-century years that aren't multiples of 4
+    assert_equal false, Cal.leap_year?(1982)
+    assert_equal false, Cal.leap_year?(1861)
+    assert_equal false, Cal.leap_year?(1891)
+  end
 
   # def test_8_number_of_days_in_month_February
   # end
