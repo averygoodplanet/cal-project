@@ -221,24 +221,130 @@ class TestIntegration < MiniTest::Unit::TestCase
 #   assert_equal expected_output, shell_output.lines[2].chomp
 # end
 
-def test_int12_puts_Feb_2000_week_5
+# def test_int12_puts_Feb_2000_week_5
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "27 28 29"
+#   assert_equal expected_output, shell_output.lines[6].chomp
+# end
+
+# def test_int12b_that_int12_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "27 28 29"
+#   assert_equal expected_output, shell_output.lines[6].chomp
+# end
+
+# def test_int13_yr_2000_line1
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "                             2000"
+#   assert_equal expected_output, shell_output.lines[0].chomp
+# end
+
+# def test_int13b_that_int13_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "                             2000"
+#   assert_equal expected_output, shell_output.lines[0].chomp
+# end
+
+# def test_int14_yr_2000_line2
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "" #empty line
+#   assert_equal expected_output, shell_output.lines[1].chomp
+# end
+
+# def test_int14b_that_int14_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "" #empty line
+#   assert_equal expected_output, shell_output.lines[1].chomp
+# end
+
+# def test_int15_yr_2000_line3
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "      January               February               March"
+#   assert_equal expected_output, shell_output.lines[2].chomp
+# end
+
+# def test_int15b_that_int15_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "      January               February               March"
+#   assert_equal expected_output, shell_output.lines[2].chomp
+# end
+
+# def test_int16_yr_2000_line4
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
+#   assert_equal expected_output, shell_output.lines[3].chomp
+# end
+
+# def test_int16b_that_int16_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2000"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read.chomp
+#   end
+#   expected_output = "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
+#   assert_equal expected_output, shell_output.lines[3].chomp
+# end
+
+def test_int17_yr_2000_line5
   shell_output = ""
-  command_to_run = "ruby cal.rb 2 2000"
+  command_to_run = "ruby cal.rb 2000"
   IO.popen(command_to_run, 'r+') do |pipe|
     shell_output = pipe.read.chomp
   end
-  expected_output = "27 28 29"
-  assert_equal expected_output, shell_output.lines[6].chomp
+  expected_output = "                   1         1  2  3  4  5            1  2  3  4"
+  assert_equal expected_output, shell_output.lines[4].chomp
 end
 
-def test_int12b_that_int12_matches_Unix_cal
+def test_int17b_that_int17_matches_Unix_cal
   shell_output = ""
-  command_to_run = "cal 2 2000"
+  command_to_run = "cal 2000"
   IO.popen(command_to_run, 'r+') do |pipe|
     shell_output = pipe.read.chomp
   end
-  expected_output = "27 28 29"
-  assert_equal expected_output, shell_output.lines[6].chomp
+  expected_output = "                   1         1  2  3  4  5            1  2  3  4"
+  assert_equal expected_output, shell_output.lines[4].chomp
+end
+
+def test_int18_yr_2000_line6
+end
+
+def test_int18b_that_int18_matches_Unix_cal
 end
 
 ## ****Example Unit Test on ./program_file.rb
