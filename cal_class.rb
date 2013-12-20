@@ -22,5 +22,15 @@ class Cal
     day_of_month = first_day_of_month
 
     zeller_day_of_week_index = (day_of_month + (((zeller_month + 1) * 26)/ 10) + year + (year/4).floor + (6 * ((year/100).floor)) + (year/400).floor) % 7
+    zeller_days_hash = { 0 => "Saturday", 1 => "Sunday", 2 => "Monday", 3 => "Tuesday", 4 => "Wednesday", 5 => "Thursday", 6 => "Friday"}
+
+    # return results in format designated by result_format
+    if result_format == :full
+      zeller_days_hash[zeller_day_of_week_index]
+    elsif result_format == :zeller_index
+      zeller_day_of_week_index
+    else
+      raise Error, "Specify result_format in call to Cal.zeller"
+    end
   end
 end

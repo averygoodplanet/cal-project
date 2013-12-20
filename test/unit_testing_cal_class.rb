@@ -15,9 +15,10 @@ class TestCalClass < MiniTest::Unit::TestCase
 
   def test_2_zeller_base_case
     # assert_equal "Sunday", Cal.zeller(1, 2012)
-    assert_equal 1, Cal.zeller(1, 2012)
-    assert_equal 4, Cal.zeller(2, 2012)
-    assert_equal 3, Cal.zeller(2, 2000)
+    assert_equal 1, Cal.zeller(1, 2012, :zeller_index)
+    assert_equal "Sunday", Cal.zeller(1, 2012)
+    assert_equal 4, Cal.zeller(2, 2012, :zeller_index)
+    assert_equal 3, Cal.zeller(2, 2000, :zeller_index)
   end
 
   # def test_3_zeller_edge_cases
