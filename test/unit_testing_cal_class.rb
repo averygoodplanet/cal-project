@@ -45,8 +45,8 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal "Saturday", Cal.zeller(12, 2012)
   end
 
-  # def test_5_zeller_out_of_scope
-  #   assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(1, 3001)
-  #   assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(12, 1799)
-  # end
+  def test_5_zeller_out_of_scope
+    assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(1, 3001)
+    assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(12, 1799)
+  end
 end

@@ -10,7 +10,12 @@ class Cal
     # see http://en.wikipedia.org/wiki/Zeller's_congruence
     # see formulas under "Implementation in software"
 
-    #assign variables other than h, which is the result of the Zeller equation
+    # test that year is within scope (1800 - 3000)
+    if year > 3000 || year < 1800
+      return "Date is out-of-scope (years 1800-3000)."
+    end
+
+    #assign variables to be used within the Zeller equation
     first_day_of_month = 1
     day_of_month = first_day_of_month
 
