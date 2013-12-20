@@ -169,6 +169,70 @@ def test_int8b_that_int8_matches_Unix_cal
   assert_equal expected_output, shell_output.lines[6].chomp
 end
 
+def test_int9_other_Sunday_month_28_days
+  shell_output = ""
+  command_to_run = "ruby cal.rb 2 2026"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "   February 2026", shell_output.lines[0].chomp
+  assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
+  assert_equal " 1  2  3  4  5  6  7", shell_output.lines[2].chomp
+  assert_equal " 8  9 10 11 12 13 14", shell_output.lines[3].chomp
+  assert_equal "15 16 17 18 19 20 21", shell_output.lines[4].chomp
+  assert_equal "22 23 24 25 26 27 28", shell_output.lines[5].chomp
+  # line below is key to this test
+  assert_equal "", shell_output.lines[6].chomp
+end
+
+def test_int9b_that_int9_matches_Unix_cal
+  shell_output = ""
+  command_to_run = "cal 2 2026"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "   February 2026", shell_output.lines[0].chomp
+  assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
+  assert_equal " 1  2  3  4  5  6  7", shell_output.lines[2].chomp
+  assert_equal " 8  9 10 11 12 13 14", shell_output.lines[3].chomp
+  assert_equal "15 16 17 18 19 20 21", shell_output.lines[4].chomp
+  assert_equal "22 23 24 25 26 27 28", shell_output.lines[5].chomp
+  # line below is key to this test
+  assert_equal "", shell_output.lines[6].chomp
+end
+
+def test_int10_other_Sunday_month_29_days
+  shell_output = ""
+  command_to_run = "ruby cal.rb 2 1880"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "   February 1880", shell_output.lines[0].chomp
+  assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
+  assert_equal " 1  2  3  4  5  6  7", shell_output.lines[2].chomp
+  assert_equal " 8  9 10 11 12 13 14", shell_output.lines[3].chomp
+  assert_equal "15 16 17 18 19 20 21", shell_output.lines[4].chomp
+  assert_equal "22 23 24 25 26 27 28", shell_output.lines[5].chomp
+  # line below is key to this test
+  assert_equal "29", shell_output.lines[6].chomp
+end
+
+def test_int11_other_Sunday_month_30_days
+  shell_output = ""
+  command_to_run = "ruby cal.rb 6 2014"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "     June 2014", shell_output.lines[0].chomp
+  assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
+  assert_equal " 1  2  3  4  5  6  7", shell_output.lines[2].chomp
+  assert_equal " 8  9 10 11 12 13 14", shell_output.lines[3].chomp
+  assert_equal "15 16 17 18 19 20 21", shell_output.lines[4].chomp
+  assert_equal "22 23 24 25 26 27 28", shell_output.lines[5].chomp
+  # line below is key to this test
+  assert_equal "29 30", shell_output.lines[6].chomp
+end
+
 # def test_int9_puts_Feb_2000_header
 #   shell_output = ""
 #   command_to_run = "ruby cal.rb 2 2000"

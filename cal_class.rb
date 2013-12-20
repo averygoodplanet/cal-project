@@ -61,7 +61,17 @@ class Cal
     week_rows[1] = " 8  9 10 11 12 13 14"
     week_rows[2] = "15 16 17 18 19 20 21"
     week_rows[3] = "22 23 24 25 26 27 28"
-    week_rows[4] = "29 30 31"
+
+    # adjusting last week row to pass test int9 - int11 (for months starting on Sunday)
+    days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
+    if days_in_this_month == 31
+      week_rows[4] = "29 30 31"
+    elsif days_in_this_month == 30
+      week_rows[4] = "29 30"
+    elsif days_in_this_month == 29
+      week_rows[4] = "29"
+    else
+    end
 
     for i in 0..week_rows.length
       puts week_rows[i]
