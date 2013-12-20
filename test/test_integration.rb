@@ -69,105 +69,105 @@ class TestIntegration < MiniTest::Unit::TestCase
     assert_equal expected_output, shell_output.lines[1].chomp
   end
 
-#   def test_int4_puts_Jan_2012_week_1
-#     shell_output = ""
-#     command_to_run = "ruby cal.rb 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read
-#     end
-#     expected_output = " 1  2  3  4  5  6  7"
-#     assert_equal expected_output, shell_output.lines[2].chomp
-#   end
+  def test_int4_puts_Jan_2012_week_1
+    shell_output = ""
+    command_to_run = "ruby cal.rb 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = " 1  2  3  4  5  6  7"
+    assert_equal expected_output, shell_output.lines[2].chomp
+  end
 
-#   def test_int4b_that_int4_matches_Unix_cal
-#     shell_output = ""
-#     command_to_run = "cal 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read
-#     end
-#     expected_output = " 1  2  3  4  5  6  7"
-#     assert_equal expected_output, shell_output.lines[2].chomp
-#   end
+  def test_int4b_that_int4_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = " 1  2  3  4  5  6  7"
+    assert_equal expected_output, shell_output.lines[2].chomp
+  end
 
-#   def test_int5_puts_Jan_2012_week_2
-#     shell_output = ""
-#     command_to_run = "ruby cal.rb 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read
-#     end
-#     expected_output = " 8  9 10 11 12 13 14"
-#     assert_equal expected_output, shell_output.lines[3].chomp
-#   end
+  def test_int5_puts_Jan_2012_week_2
+    shell_output = ""
+    command_to_run = "ruby cal.rb 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = " 8  9 10 11 12 13 14"
+    assert_equal expected_output, shell_output.lines[3].chomp
+  end
 
-#   def test_int5b_that_int5_matches_Unix_cal
-#     shell_output = ""
-#     command_to_run = "cal 1 2012"
-#     IO.popen(command_to_run, 'r+') do |pipe|
-#       shell_output = pipe.read
-#     end
-#     expected_output = " 8  9 10 11 12 13 14"
-#     assert_equal expected_output, shell_output.lines[3].chomp
-#   end
+  def test_int5b_that_int5_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 1 2012"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = " 8  9 10 11 12 13 14"
+    assert_equal expected_output, shell_output.lines[3].chomp
+  end
 
-# def test_int6_puts_Jan_2012_week_3
-#   shell_output = ""
-#   command_to_run = "ruby cal.rb 1 2012"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read
-#   end
-#   expected_output = "15 16 17 18 19 20 21"
-#   assert_equal expected_output, shell_output.lines[4].chomp
-# end
+def test_int6_puts_Jan_2012_week_3
+  shell_output = ""
+  command_to_run = "ruby cal.rb 1 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  expected_output = "15 16 17 18 19 20 21"
+  assert_equal expected_output, shell_output.lines[4].chomp
+end
 
-# def test_int6b_that_int6_matches_Unix_cal
-#   shell_output = ""
-#   command_to_run = "cal 1 2012"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read
-#   end
-#   expected_output = "15 16 17 18 19 20 21"
-#   assert_equal expected_output, shell_output.lines[4].chomp
-# end
+def test_int6b_that_int6_matches_Unix_cal
+  shell_output = ""
+  command_to_run = "cal 1 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  expected_output = "15 16 17 18 19 20 21"
+  assert_equal expected_output, shell_output.lines[4].chomp
+end
 
-# def test_int7_puts_Jan_2012_week_4
-#   shell_output = ""
-#   command_to_run = "ruby cal.rb 1 2012"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read
-#   end
-#   expected_output = "22 23 24 25 26 27 28"
-#   assert_equal expected_output, shell_output.lines[5].chomp
-# end
+def test_int7_puts_Jan_2012_week_4
+  shell_output = ""
+  command_to_run = "ruby cal.rb 1 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  expected_output = "22 23 24 25 26 27 28"
+  assert_equal expected_output, shell_output.lines[5].chomp
+end
 
-# def test_int7b_that_int7_matches_Unix_cal
-#   shell_output = ""
-#   command_to_run = "cal 1 2012"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read
-#   end
-#   expected_output = "22 23 24 25 26 27 28"
-#   assert_equal expected_output, shell_output.lines[5].chomp
-# end
+def test_int7b_that_int7_matches_Unix_cal
+  shell_output = ""
+  command_to_run = "cal 1 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  expected_output = "22 23 24 25 26 27 28"
+  assert_equal expected_output, shell_output.lines[5].chomp
+end
 
-# def test_int8_puts_Jan_2012_week_4
-#   shell_output = ""
-#   command_to_run = "ruby cal.rb 1 2012"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read
-#   end
-#   expected_output = "29 30 31"
-#   assert_equal expected_output, shell_output.lines[6].chomp
-# end
+def test_int8_puts_Jan_2012_week_4
+  shell_output = ""
+  command_to_run = "ruby cal.rb 1 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  expected_output = "29 30 31"
+  assert_equal expected_output, shell_output.lines[6].chomp
+end
 
-# def test_int8b_that_int8_matches_Unix_cal
-#   shell_output = ""
-#   command_to_run = "cal 1 2012"
-#   IO.popen(command_to_run, 'r+') do |pipe|
-#     shell_output = pipe.read
-#   end
-#   expected_output = "29 30 31"
-#   assert_equal expected_output, shell_output.lines[6].chomp
-# end
+def test_int8b_that_int8_matches_Unix_cal
+  shell_output = ""
+  command_to_run = "cal 1 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  expected_output = "29 30 31"
+  assert_equal expected_output, shell_output.lines[6].chomp
+end
 
 # def test_int9_puts_Feb_2000_header
 #   shell_output = ""

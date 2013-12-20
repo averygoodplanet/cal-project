@@ -55,6 +55,17 @@ class Cal
 
     weekday_names_row = "Su Mo Tu We Th Fr Sa"
     puts weekday_names_row
+
+    week_rows = []
+    week_rows[0] = " 1  2  3  4  5  6  7"
+    week_rows[1] = " 8  9 10 11 12 13 14"
+    week_rows[2] = "15 16 17 18 19 20 21"
+    week_rows[3] = "22 23 24 25 26 27 28"
+    week_rows[4] = "29 30 31"
+
+    for i in 0..week_rows.length
+      puts week_rows[i]
+    end
   end
 
   def self.get_month_name(month_number)
