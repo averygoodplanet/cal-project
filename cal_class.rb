@@ -64,10 +64,27 @@ class Cal
     # construct last row (account for number of days in month e.g. 28, 29, 30, 31)
 
     week_rows = []
-    week_rows[0] = " 1  2  3  4  5  6  7"
-    week_rows[1] = " 8  9 10 11 12 13 14"
-    week_rows[2] = "15 16 17 18 19 20 21"
-    week_rows[3] = "22 23 24 25 26 27 28"
+    if first_day_of_month == 1
+      week_rows[0] = " 1  2  3  4  5  6  7"
+      week_rows[1] = " 8  9 10 11 12 13 14"
+      week_rows[2] = "15 16 17 18 19 20 21"
+      week_rows[3] = "22 23 24 25 26 27 28"
+    elsif first_day_of_month > 1
+      week_rows[0] = ""
+
+      # make first row's leading spaces (3 spaces per grouping)
+      for i in 1..(first_day_of_month - 1)
+        week_rows[0] += "   "
+      end
+
+      for i in 1..(7 - (first_day_of_month - 1))
+        week_rows[0] += " #{i} "
+      end
+
+      week_rows[0] = week_rows[0].chop
+      #  week_row[0] should be "    1  2  3  4  5  6";  Sun. blank, Mon. filled in
+    end
+
 
     # adjusting last week row to pass test int9 - int11 (for months starting on Sunday)
     days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)

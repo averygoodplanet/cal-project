@@ -233,23 +233,14 @@ def test_int11_other_Sunday_month_30_days
   assert_equal "29 30", shell_output.lines[6].chomp
 end
 
-def test_int12_nonSunday_start_28_days
+def test_int12_first_row_Mon_start
   shell_output = ""
-  command_to_run = "ruby cal.rb 2 1900"
+  command_to_run = "ruby cal.rb 10 2012"
   IO.popen(command_to_run, 'r+') do |pipe|
     shell_output = pipe.read
   end
-  assert_equal "   February 1900", shell_output.lines[0].chomp
-  assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
-  assert_equal "             1  2  3", shell_output.lines[2].chomp
-  assert_equal " 4  5  6  7  8  9 10", shell_output.lines[3].chomp
-  assert_equal "11 12 13 14 15 16 17", shell_output.lines[4].chomp
-  assert_equal "18 19 20 21 22 23 24", shell_output.lines[5].chomp
-  assert_equal "25 26 27 28", shell_output.lines[6].chomp
+  assert_equal "    1  2  3  4  5  6", shell_output.lines[2].chomp
 end
-
-# def test_int13_nonSunday_start_29_days
-# end
 
 # def test_int14_nonSunday_start_30_days
 # end
