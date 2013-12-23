@@ -56,6 +56,7 @@ class Cal
     weekday_names_row = "Su Mo Tu We Th Fr Sa"
     puts weekday_names_row
 
+    days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
     # get zeller to determine which day of week month starts on
     first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
     if first_day_of_month == 0
@@ -72,6 +73,15 @@ class Cal
       week_rows[1] = " 8  9 10 11 12 13 14"
       week_rows[2] = "15 16 17 18 19 20 21"
       week_rows[3] = "22 23 24 25 26 27 28"
+
+      if days_in_this_month == 31
+        week_rows[4] = "29 30 31"
+      elsif days_in_this_month == 30
+        week_rows[4] = "29 30"
+      elsif days_in_this_month == 29
+        week_rows[4] = "29"
+      else
+      end
     else
       week_rows[0] = ""
 
@@ -87,19 +97,6 @@ class Cal
       end
 
       week_rows[0] = week_rows[0].chop
-      #  week_row[0] should be "    1  2  3  4  5  6";  Sun. blank, Mon. filled in
-    end
-
-
-    # adjusting last week row to pass test int9 - int11 (for months starting on Sunday)
-    days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
-    if days_in_this_month == 31
-      week_rows[4] = "29 30 31"
-    elsif days_in_this_month == 30
-      week_rows[4] = "29 30"
-    elsif days_in_this_month == 29
-      week_rows[4] = "29"
-    else
     end
 
     for i in 0..week_rows.length

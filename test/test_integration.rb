@@ -287,7 +287,6 @@ def test_int17_first_row_Sat_start
   assert_equal "                   1", shell_output.lines[2].chomp
 end
 
-
 # def test_int14_nonSunday_start_30_days
 # end
 
