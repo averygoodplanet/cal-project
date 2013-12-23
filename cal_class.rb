@@ -97,6 +97,38 @@ class Cal
       end
 
       week_rows[0] = week_rows[0].chop
+      current_week_row = 1
+
+      # make middle full rows in month
+      first_in_row = last_number_in_first_row + 1
+      last_number_middle_rows = 0
+      while (first_in_row + 6) <= days_in_this_month do
+        week_string = ""
+        for i in first_in_row..(first_in_row + 6)
+          if i < 10
+            number_string = " " + i.to_s
+         else
+            number_string = i.to_s
+         end
+          week_string += number_string + " "
+          last_number_middle_rows = number_string.to_i
+        end
+        week_string = week_string.chop
+        week_rows[current_week_row] = week_string
+        current_week_row += 1
+        first_in_row += 7
+      end
+
+      #make less-than-full ending row
+      if last_number_middle_rows < days_in_this_month
+        first_in_row = last_number_middle_rows + 1
+        last_week_array = []
+        for i in first_in_row..days_in_this_month
+          last_week_array.push(i)
+        end
+        week_rows.push(last_week_array.join(" "))
+      end
+
     end
 
     for i in 0..week_rows.length

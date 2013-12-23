@@ -287,6 +287,114 @@ def test_int17_first_row_Sat_start
   assert_equal "                   1", shell_output.lines[2].chomp
 end
 
+def test_int18_middle_full_rows_Mon_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 10 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal " 7  8  9 10 11 12 13", shell_output.lines[3].chomp
+  assert_equal "14 15 16 17 18 19 20", shell_output.lines[4].chomp
+  assert_equal "21 22 23 24 25 26 27", shell_output.lines[5].chomp
+end
+
+def test_int19_middle_full_rows_Tues_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 5 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal " 6  7  8  9 10 11 12", shell_output.lines[3].chomp
+  assert_equal "13 14 15 16 17 18 19", shell_output.lines[4].chomp
+  assert_equal "20 21 22 23 24 25 26", shell_output.lines[5].chomp
+end
+
+def test_int20_middle_full_rows_Weds_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 8 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal " 5  6  7  8  9 10 11", shell_output.lines[3].chomp
+  assert_equal "12 13 14 15 16 17 18", shell_output.lines[4].chomp
+  assert_equal "19 20 21 22 23 24 25", shell_output.lines[5].chomp
+end
+
+def test_int21_middle_full_rows_Thurs_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 11 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal " 4  5  6  7  8  9 10", shell_output.lines[3].chomp
+  assert_equal "11 12 13 14 15 16 17", shell_output.lines[4].chomp
+  assert_equal "18 19 20 21 22 23 24", shell_output.lines[5].chomp
+end
+
+def test_int22_middle_full_rows_Fri_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 6 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal " 3  4  5  6  7  8  9", shell_output.lines[3].chomp
+  assert_equal "10 11 12 13 14 15 16", shell_output.lines[4].chomp
+  assert_equal "17 18 19 20 21 22 23", shell_output.lines[5].chomp
+  assert_equal "24 25 26 27 28 29 30", shell_output.lines[6].chomp
+end
+
+def test_int23_middle_full_rows_Sat_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 12 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal " 2  3  4  5  6  7  8", shell_output.lines[3].chomp
+  assert_equal " 9 10 11 12 13 14 15", shell_output.lines[4].chomp
+  assert_equal "16 17 18 19 20 21 22", shell_output.lines[5].chomp
+  assert_equal "23 24 25 26 27 28 29", shell_output.lines[6].chomp
+end
+
+def test_int24_Wed_start_full_month
+  shell_output = ""
+  command_to_run = "ruby cal.rb 8 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "          1  2  3  4", shell_output.lines[2].chomp
+  assert_equal " 5  6  7  8  9 10 11", shell_output.lines[3].chomp
+  assert_equal "12 13 14 15 16 17 18", shell_output.lines[4].chomp
+  assert_equal "19 20 21 22 23 24 25", shell_output.lines[5].chomp
+  assert_equal "26 27 28 29 30 31", shell_output.lines[6].chomp
+end
+
+def test_int25_Wed_start_Feb_full_month
+  shell_output = ""
+  command_to_run = "ruby cal.rb 2 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "          1  2  3  4", shell_output.lines[2].chomp
+  assert_equal " 5  6  7  8  9 10 11", shell_output.lines[3].chomp
+  assert_equal "12 13 14 15 16 17 18", shell_output.lines[4].chomp
+  assert_equal "19 20 21 22 23 24 25", shell_output.lines[5].chomp
+  assert_equal "26 27 28 29", shell_output.lines[6].chomp
+end
+
+def test_int26_Sat_start_full_month
+shell_output = ""
+command_to_run = "ruby cal.rb 9 2012"
+IO.popen(command_to_run, 'r+') do |pipe|
+  shell_output = pipe.read
+end
+assert_equal "                   1", shell_output.lines[2].chomp
+assert_equal " 2  3  4  5  6  7  8", shell_output.lines[3].chomp
+assert_equal " 9 10 11 12 13 14 15", shell_output.lines[4].chomp
+assert_equal "16 17 18 19 20 21 22", shell_output.lines[5].chomp
+assert_equal "23 24 25 26 27 28 29", shell_output.lines[6].chomp
+assert_equal "30", shell_output.lines[7].chomp
+end
+
 # def test_int14_nonSunday_start_30_days
 # end
 
