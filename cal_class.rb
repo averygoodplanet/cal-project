@@ -58,6 +58,9 @@ class Cal
 
     # get zeller to determine which day of week month starts on
     first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
+    if first_day_of_month == 0
+      first_day_of_month = 7
+    end
     # construct first row (account for day of week starting on, leading white spaces )
     # will probably have to account for 1space-singledigit-1space, vs. doubledigit-1space
     # construct middle rows (account for next start day...)
@@ -69,7 +72,7 @@ class Cal
       week_rows[1] = " 8  9 10 11 12 13 14"
       week_rows[2] = "15 16 17 18 19 20 21"
       week_rows[3] = "22 23 24 25 26 27 28"
-    elsif first_day_of_month > 1
+    else
       week_rows[0] = ""
 
       # make first row's leading spaces (3 spaces per grouping)
@@ -77,7 +80,9 @@ class Cal
         week_rows[0] += "   "
       end
 
-      for i in 1..(7 - (first_day_of_month - 1))
+      last_number_in_first_row = 7 - (first_day_of_month -1)
+
+      for i in 1..last_number_in_first_row
         week_rows[0] += " #{i} "
       end
 

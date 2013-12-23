@@ -242,6 +242,52 @@ def test_int12_first_row_Mon_start
   assert_equal "    1  2  3  4  5  6", shell_output.lines[2].chomp
 end
 
+def test_int13_first_row_Tues_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 5 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "       1  2  3  4  5", shell_output.lines[2].chomp
+end
+
+def test_int14_first_row_Wed_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 8 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "          1  2  3  4", shell_output.lines[2].chomp
+end
+
+def test_int15_first_row_Thurs_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 11 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "             1  2  3", shell_output.lines[2].chomp
+end
+
+def test_int16_first_row_Fri_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 6 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "                1  2", shell_output.lines[2].chomp
+end
+
+def test_int17_first_row_Sat_start
+  shell_output = ""
+  command_to_run = "ruby cal.rb 12 2012"
+  IO.popen(command_to_run, 'r+') do |pipe|
+    shell_output = pipe.read
+  end
+  assert_equal "                   1", shell_output.lines[2].chomp
+end
+
+
 # def test_int14_nonSunday_start_30_days
 # end
 
