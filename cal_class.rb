@@ -42,7 +42,6 @@ class Cal
   def self.get_month_strings_array(month_number, year_number)
 
     month_name = Cal.get_month_name(month_number)
-    month_space_year = month_name + " " + year_number.to_s
 
     leading_whitespace = ""
     leading_spaces_by_month = { 1 => 4, 2 => 3, 3 => 5, 4 => 5, 5 => 6,  6 => 5, 7 => 5, 8 => 4, 9 => 3, 10 => 4, 11 => 3, 12 => 3}
@@ -52,7 +51,7 @@ class Cal
     end
 
 
-    month_header_string = leading_whitespace + month_space_year
+    month_header_string = month_name.center(20)
     weekday_names_row = "Su Mo Tu We Th Fr Sa"
 
     month_rows = []
@@ -240,7 +239,7 @@ end
         months_string_arrays[i] = self.get_month_strings_array(i+1, year)
       end
     output_strings_array = []
-    first_string_across_months = months_string_arrays[0][0].chomp + months_string_arrays[1][0].chomp + months_string_arrays[2][0].chomp
+    first_string_across_months = months_string_arrays[0][0].chomp + "  " + months_string_arrays[1][0].chomp + "  " + months_string_arrays[2][0].sub(/\s+\Z/, "")
     puts first_string_across_months
       # using shift on each month, and checking each item for nil (if nil then setting to
       # blank spaces string, until loop all three shifted items are nil.)
