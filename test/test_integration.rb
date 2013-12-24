@@ -413,95 +413,95 @@ def test_int27b_that_27_matches_Unix_cal
   assert_equal "                             2012", shell_output.lines[0].chomp
 end
 
-def test_int28_yr_1800_line2
-  shell_output = ""
-  command_to_run = "ruby cal.rb 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "", shell_output.lines[1]
-end
+# def test_int28_yr_1800_line2
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "", shell_output.lines[1]
+# end
 
-def test_int28b_that_int28_matches_Unix_cal
-  shell_output = ""
-  command_to_run = "cal 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "", shell_output.lines[1]
-end
+# def test_int28b_that_int28_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "", shell_output.lines[1]
+# end
 
-def test_int29_yr_1800_line3
-  shell_output = ""
-  command_to_run = "ruby cal.rb 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "      January               February               March", shell_output.lines[2].chomp
-end
+# def test_int29_yr_1800_line3
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "      January               February               March", shell_output.lines[2].chomp
+# end
 
-def test_int29b_that_int29_matches_Unix_cal
-  shell_output = ""
-  command_to_run = "cal 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "      January               February               March", shell_output.lines[2].chomp
-end
+# def test_int29b_that_int29_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "      January               February               March", shell_output.lines[2].chomp
+# end
 
-def test_int30_yr_1800_line4
-  shell_output = ""
-  command_to_run = "ruby cal.rb 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa" , shell_output.lines[3].chomp
-end
+# def test_int30_yr_1800_line4
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa" , shell_output.lines[3].chomp
+# end
 
-def test_int30b_that_int30_matches_Unix_cal
-  shell_output = ""
-  command_to_run = "cal 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa" , shell_output.lines[3].chomp
-end
+# def test_int30b_that_int30_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa" , shell_output.lines[3].chomp
+# end
 
-def test_int31_yr_1800_line5
-  shell_output = ""
-  command_to_run = "ruby cal.rb 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal " 1  2  3  4  5  6  7            1  2  3  4               1  2  3" , shell_output.lines[4].chomp
-end
+# def test_int31_yr_1800_line5
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal " 1  2  3  4  5  6  7            1  2  3  4               1  2  3" , shell_output.lines[4].chomp
+# end
 
-def test_int31b_that_int32b_matches_Unix_cal
-  shell_output = ""
-  command_to_run = "cal 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal " 1  2  3  4  5  6  7            1  2  3  4               1  2  3" , shell_output.lines[4].chomp
-end
+# def test_int31b_that_int32b_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal " 1  2  3  4  5  6  7            1  2  3  4               1  2  3" , shell_output.lines[4].chomp
+# end
 
-def test_int32_yr_1800_line9
-  shell_output = ""
-  command_to_run = "ruby cal.rb 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "29 30 31              26 27 28 29           25 26 27 28 29 30 31" , shell_output.lines[9].chomp
-end
+# def test_int32_yr_1800_line9
+#   shell_output = ""
+#   command_to_run = "ruby cal.rb 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "29 30 31              26 27 28 29           25 26 27 28 29 30 31" , shell_output.lines[9].chomp
+# end
 
-def test_int32b_that_int32b_matches_Unix_cal
-  shell_output = ""
-  command_to_run = "cal 2012"
-  IO.popen(command_to_run, 'r+') do |pipe|
-    shell_output = pipe.read
-  end
-  assert_equal "29 30 31              26 27 28 29           25 26 27 28 29 30 31" , shell_output.lines[9].chomp
-end
+# def test_int32b_that_int32b_matches_Unix_cal
+#   shell_output = ""
+#   command_to_run = "cal 2012"
+#   IO.popen(command_to_run, 'r+') do |pipe|
+#     shell_output = pipe.read
+#   end
+#   assert_equal "29 30 31              26 27 28 29           25 26 27 28 29 30 31" , shell_output.lines[9].chomp
+# end
 
 # def test_int14_nonSunday_start_30_days
 # end

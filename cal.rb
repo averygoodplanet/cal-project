@@ -2,15 +2,15 @@
 require_relative 'cal_class.rb'
 
 #accepting arguments from command line, e.g. "ruby cal.rb month year"
-month = ARGV[0].to_i
-year = ARGV[1].to_i
+first_argument = ARGV[0].to_i
+second_argument = ARGV[1].to_i
 
 # puts "#{month} #{year}"
 
-if month
-  Cal.display_month(month, year)
+if ARGV.length == 2
+  Cal.display_month(first_argument, second_argument)
 else
-  Cal.display_year(year)
+  Cal.display_year(first_argument)
 end
 
 # Example for Future Reference

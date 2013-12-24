@@ -136,6 +136,11 @@ class Cal
     end
   end
 
+  def self.display_year(year)
+    header_string = "                             #{year}"
+    puts header_string
+  end
+
   def self.get_month_name(month_number)
     month_name_hash = { 1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"}
     month_name_hash[month_number]
