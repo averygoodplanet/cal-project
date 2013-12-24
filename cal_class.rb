@@ -139,6 +139,7 @@ class Cal
   def self.display_year(year)
     header_string = "                             #{year}"
     puts header_string
+    puts "\n"
   end
 
   def self.get_month_name(month_number)
