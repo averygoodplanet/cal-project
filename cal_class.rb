@@ -39,6 +39,101 @@ class Cal
     end
   end
 
+  def self.get_month_strings_array(month_number, year_number)
+
+    month_name = Cal.get_month_name(month_number)
+    month_space_year = month_name + " " + year_number.to_s
+
+    leading_whitespace = ""
+    leading_spaces_by_month = { 1 => 4, 2 => 3, 3 => 5, 4 => 5, 5 => 6,  6 => 5, 7 => 5, 8 => 4, 9 => 3, 10 => 4, 11 => 3, 12 => 3}
+    number_of_leading_spaces = leading_spaces_by_month[month_number]
+    for i in 1..number_of_leading_spaces
+      leading_whitespace += " "
+    end
+
+
+    month_header_string = leading_whitespace + month_space_year
+    weekday_names_row = "Su Mo Tu We Th Fr Sa"
+
+    month_rows = []
+    month_rows[0] = month_header_string
+    month_rows[1] = weekday_names_row
+
+    days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
+    # get zeller to determine which day of week month starts on
+    first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
+    if first_day_of_month == 0
+      first_day_of_month = 7
+    end
+    # construct first row (account for day of week starting on, leading white spaces )
+    # will probably have to account for 1space-singledigit-1space, vs. doubledigit-1space
+    # construct middle rows (account for next start day...)
+    # construct last row (account for number of days in month e.g. 28, 29, 30, 31)
+
+    if first_day_of_month == 1
+      month_rows[2] = " 1  2  3  4  5  6  7"
+      month_rows[3] = " 8  9 10 11 12 13 14"
+      month_rows[4] = "15 16 17 18 19 20 21"
+      month_rows[5] = "22 23 24 25 26 27 28"
+
+      if days_in_this_month == 31
+        month_rows[6] = "29 30 31"
+      elsif days_in_this_month == 30
+        month_rows[6] = "29 30"
+      elsif days_in_this_month == 29
+        month_rows[6] = "29"
+      else
+      end
+    else
+      month_rows[2] = ""
+
+      # make first row's leading spaces (3 spaces per grouping)
+      for i in 1..(first_day_of_month - 1)
+        month_rows[2] += "   "
+      end
+
+      last_number_in_first_row = 7 - (first_day_of_month -1)
+
+      for i in 1..last_number_in_first_row
+        month_rows[2] += " #{i} "
+      end
+
+      month_rows[2] = month_rows[2].chop
+      current_week_row = 3
+
+      # make middle full rows in month
+      first_in_row = last_number_in_first_row + 1
+      last_number_middle_rows = 0
+      while (first_in_row + 6) <= days_in_this_month do
+        week_string = ""
+        for i in first_in_row..(first_in_row + 6)
+            if i < 10
+              number_string = " " + i.to_s
+           else
+              number_string = i.to_s
+           end
+          week_string += number_string + " "
+          last_number_middle_rows = number_string.to_i
+        end
+        week_string = week_string.chop
+        month_rows[current_week_row] = week_string
+        current_week_row += 1
+        first_in_row += 7
+      end
+
+      #make less-than-full ending row
+      if last_number_middle_rows < days_in_this_month
+        first_in_row = last_number_middle_rows + 1
+        last_week_array = []
+        for i in first_in_row..days_in_this_month
+          last_week_array.push(i)
+        end
+        month_rows.push(last_week_array.join(" "))
+      end
+  end
+  month_rows
+end
+
   def self.display_month(month_number, year_number)
     month_name = Cal.get_month_name(month_number)
     month_space_year = month_name + " " + year_number.to_s
@@ -105,11 +200,11 @@ class Cal
       while (first_in_row + 6) <= days_in_this_month do
         week_string = ""
         for i in first_in_row..(first_in_row + 6)
-          if i < 10
-            number_string = " " + i.to_s
-         else
-            number_string = i.to_s
-         end
+            if i < 10
+              number_string = " " + i.to_s
+           else
+              number_string = i.to_s
+           end
           week_string += number_string + " "
           last_number_middle_rows = number_string.to_i
         end
@@ -128,8 +223,7 @@ class Cal
         end
         week_rows.push(last_week_array.join(" "))
       end
-
-    end
+  end
 
     for i in 0..week_rows.length
       puts week_rows[i]
@@ -140,6 +234,16 @@ class Cal
     header_string = "                             #{year}"
     puts header_string
     puts "\n"
+    months_string_arrays = []
+    # display first three (3) months
+      for i in 0..2
+        months_string_arrays[i] = self.get_month_strings_array(i+1, year)
+      end
+    output_strings_array = []
+    first_string_across_months = months_string_arrays[0][0].chomp + months_string_arrays[1][0].chomp + months_string_arrays[2][0].chomp
+    puts first_string_across_months
+      # using shift on each month, and checking each item for nil (if nil then setting to
+      # blank spaces string, until loop all three shifted items are nil.)
   end
 
   def self.get_month_name(month_number)
@@ -184,4 +288,6 @@ class Cal
       end
     end
   end
+
+#this should be the end statement for the Class
 end
