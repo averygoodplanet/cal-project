@@ -230,12 +230,15 @@ end
   end
 
   def self.display_year(year)
-    header_string = "                             #{year}"
-    puts header_string
+    puts "                             #{year}"
+
+    # for each trimester:
     puts "\n"
     months_string_arrays = []
-    # display first three (3) months
+    # this is now for the first trimester (Jan, Feb, March)
+    # later will be part of a larger loop so ( 1, 2, 3; 4, 5, 6; 7, 8, 9; 10, 11, 12)
       for i in 0..2
+        # e.g. January's row strings are stored in months_string_arrays[0]
         months_string_arrays[i] = self.get_month_strings_array(i+1, year)
       end
 
@@ -245,9 +248,8 @@ end
       concatenated_strings_array[i] = months_string_arrays[0][i].ljust(20, " ").chomp + "  " + months_string_arrays[1][i].ljust(20, " ").chomp + "  " + months_string_arrays[2][i].ljust(20, " ").sub(/\s+\Z/, "")
       puts concatenated_strings_array[i]
     end
-      # Possible idea for later handling of 6-row month edge case:
-      #using shift on each month array, and checking each item for nil (if nil then setting to
-      # blank spaces string, until loop all three shifted items are nil.)
+
+    #handle edge case where >=1 month has a 6th row (e.g. March 2013 has 6 week rows)
   end
 
   def self.get_month_name(month_number)
