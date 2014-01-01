@@ -238,12 +238,15 @@ end
       for i in 0..2
         months_string_arrays[i] = self.get_month_strings_array(i+1, year)
       end
-    output_strings_array = []
-    first_string_across_months = months_string_arrays[0][0].chomp + "  " + months_string_arrays[1][0].chomp + "  " + months_string_arrays[2][0].sub(/\s+\Z/, "")
-    puts first_string_across_months
-    second_string_across_months = months_string_arrays[0][1].chomp + "  " + months_string_arrays[1][1].chomp + "  " + months_string_arrays[2][1].sub(/\s+\Z/, "")
-    puts second_string_across_months
-      # using shift on each month, and checking each item for nil (if nil then setting to
+
+    concatenated_strings_array = []
+
+    for i in 0..2
+      concatenated_strings_array[i] = months_string_arrays[0][i].chomp + "  " + months_string_arrays[1][i].chomp + "  " + months_string_arrays[2][i].sub(/\s+\Z/, "")
+      puts concatenated_strings_array[i]
+    end
+      # Possible idea for later handling of 6-row month edge case:
+      #using shift on each month array, and checking each item for nil (if nil then setting to
       # blank spaces string, until loop all three shifted items are nil.)
   end
 
