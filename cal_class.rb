@@ -241,8 +241,8 @@ end
 
     concatenated_strings_array = []
 
-    for i in 0..2
-      concatenated_strings_array[i] = months_string_arrays[0][i].chomp + "  " + months_string_arrays[1][i].chomp + "  " + months_string_arrays[2][i].sub(/\s+\Z/, "")
+    for i in 0..6
+      concatenated_strings_array[i] = months_string_arrays[0][i].ljust(20, " ").chomp + "  " + months_string_arrays[1][i].ljust(20, " ").chomp + "  " + months_string_arrays[2][i].ljust(20, " ").sub(/\s+\Z/, "")
       puts concatenated_strings_array[i]
     end
       # Possible idea for later handling of 6-row month edge case:
