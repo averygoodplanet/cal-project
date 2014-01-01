@@ -238,7 +238,7 @@ end
     # this is now for the first trimester (Jan, Feb, March)
     # later will be part of a larger loop so ( 1, 2, 3; 4, 5, 6; 7, 8, 9; 10, 11, 12)
       for i in 0..2
-        # e.g. January's row strings are stored in months_string_arrays[0]
+        # e.g. January's row strings are stored in month_string_arrays[0]
         months_string_arrays[i] = self.get_month_strings_array(i+1, year)
       end
 

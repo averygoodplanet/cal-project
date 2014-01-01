@@ -93,4 +93,45 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal 28, Cal.number_of_days_in_month(2, 1900)
     assert_equal 28, Cal.number_of_days_in_month(2, 2005)
   end
+
+  def test_10_months_string_arrays_1st_trimester_2013
+    expected = [ ["      January       ",
+                          "Su Mo Tu We Th Fr Sa",
+                          "       1  2  3  4  5",
+                          " 6  7  8  9 10 11 12",
+                          "13 14 15 16 17 18 19",
+                          "20 21 22 23 24 25 26",
+                          "27 28 29 30 31"],
+                          ["      February      ",
+                           "Su Mo Tu We Th Fr Sa",
+                           "                1  2",
+                           " 3  4  5  6  7  8  9",
+                           "10 11 12 13 14 15 16",
+                           "17 18 19 20 21 22 23",
+                            "24 25 26 27 28"],
+                          ["       March        ",
+                          "Su Mo Tu We Th Fr Sa",
+                          "                1  2",
+                          " 3  4  5  6  7  8  9",
+                          "10 11 12 13 14 15 16",
+                          "17 18 19 20 21 22 23",
+                          "24 25 26 27 28 29 30",
+                          "31"]]
+    months_string_arrays = []
+    for i in 0..2
+      # e.g. January's row strings are stored in month_string_arrays[0]
+      months_string_arrays[i] = Cal.get_month_strings_array(i+1, 2013)
+    end
+    assert_equal expected, months_string_arrays
+    # January 2013 should have 7 rows,  [7-2 =] 5 week rows
+    assert_equal 7, months_string_arrays[0].length
+    # February 2013 should have 7 rows,  [7-2 =] 5 week rows
+    assert_equal 7, months_string_arrays[1].length
+    # March 2013 should have 8 rows, [8 -2 =] 6 week rows
+    assert_equal 8, months_string_arrays[2].length
+    # Should get nil if you call index of > (length - 1 (since indexes count from zero)) on January 2013 subarray?
+    assert_equal true, months_string_arrays[0][7].nil?
+    assert_equal false, months_string_arrays[0][6].nil?
+  end
+
 end
