@@ -250,6 +250,16 @@ end
     end
 
     #handle edge case where >=1 month has a 6th row (e.g. March 2013 has 6 week rows)
+    # if any of the three months has a 6th row
+    if !months_string_arrays[0][7].nil? or !months_string_arrays[1][7].nil? or !months_string_arrays[2][7].nil?
+      for i in 0..2
+        if months_string_arrays[i][7].nil?
+          months_string_arrays[i][7] = "".ljust(20, " ")
+        end
+      end
+      concatenated_strings_array[7] = months_string_arrays[0][7].ljust(20, " ").chomp + "  " + months_string_arrays[1][7].ljust(20, " ").chomp + "  " + months_string_arrays[2][7].ljust(20, " ").sub(/\s+\Z/, "")
+      puts concatenated_strings_array[7]
+    end
   end
 
   def self.get_month_name(month_number)

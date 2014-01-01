@@ -504,6 +504,24 @@ class TestIntegration < MiniTest::Unit::TestCase
     assert_equal "29 30 31              26 27 28 29           25 26 27 28 29 30 31" , shell_output.lines[8].chomp
   end
 
+  def test_int33_1st_trimester_2013
+    shell_output = ""
+    command_to_run = "ruby cal.rb 2013"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    assert_equal "                                            31" , shell_output.lines[9].chomp
+  end
+
+  def test_int33b_that_int33_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 2013"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    assert_equal "                                            31" , shell_output.lines[9].chomp
+  end
+
   # def test_int33_yr_2012_line10
   #   #blank line preceding months (e.g. before April May June line)
   #   shell_output = ""
