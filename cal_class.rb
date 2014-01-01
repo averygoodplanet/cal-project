@@ -244,9 +244,34 @@ end
 
     concatenated_strings_array = []
 
-    for i in 0..6
+    # # NEW CODE >>>>>>>>
+    # for j in 0..7
+    #   if !months_string_arrays[0][j].nil? or !months_string_arrays[1][j].nil? or !months_string_arrays[2][j].nil?
+    #     for k in 0..2
+    #       if months_string_arrays[k][j].nil?
+    #         months_string_arrays[k][j] = "".ljust(20, " ")
+    #       end
+    #     end
+    #   end
+    #   concatenated_strings_array[j] = months_string_arrays[0][j].ljust(20, " ").chomp + "  " + months_string_arrays[1][j].ljust(20, " ").chomp + "  " + months_string_arrays[2][j].ljust(20, " ").sub(/\s+\Z/, "")
+    #   puts concatenated_strings_array[j]
+    # end
+    # # NEW CODE  >>>>>>>
+
+    ################################ OLD CODE #####################
+    for i in 0..5
       concatenated_strings_array[i] = months_string_arrays[0][i].ljust(20, " ").chomp + "  " + months_string_arrays[1][i].ljust(20, " ").chomp + "  " + months_string_arrays[2][i].ljust(20, " ").sub(/\s+\Z/, "")
       puts concatenated_strings_array[i]
+    end
+
+    if !months_string_arrays[0][6].nil? or !months_string_arrays[1][6].nil? or !months_string_arrays[2][6].nil?
+      for i in 0..2
+        if months_string_arrays[i][6].nil?
+          months_string_arrays[i][6] = "".ljust(20, " ")
+        end
+      end
+      concatenated_strings_array[6] = months_string_arrays[0][6].ljust(20, " ").chomp + "  " + months_string_arrays[1][6].ljust(20, " ").chomp + "  " + months_string_arrays[2][6].ljust(20, " ").sub(/\s+\Z/, "")
+      puts concatenated_strings_array[6]
     end
 
     #handle edge case where >=1 month has a 6th row (e.g. March 2013 has 6 week rows)
@@ -260,6 +285,7 @@ end
       concatenated_strings_array[7] = months_string_arrays[0][7].ljust(20, " ").chomp + "  " + months_string_arrays[1][7].ljust(20, " ").chomp + "  " + months_string_arrays[2][7].ljust(20, " ").sub(/\s+\Z/, "")
       puts concatenated_strings_array[7]
     end
+    ################################### OLD CODE #################
   end
 
   def self.get_month_name(month_number)
