@@ -241,6 +241,8 @@ end
     output_strings_array = []
     first_string_across_months = months_string_arrays[0][0].chomp + "  " + months_string_arrays[1][0].chomp + "  " + months_string_arrays[2][0].sub(/\s+\Z/, "")
     puts first_string_across_months
+    second_string_across_months = months_string_arrays[0][1].chomp + "  " + months_string_arrays[1][1].chomp + "  " + months_string_arrays[2][1].sub(/\s+\Z/, "")
+    puts second_string_across_months
       # using shift on each month, and checking each item for nil (if nil then setting to
       # blank spaces string, until loop all three shifted items are nil.)
   end
