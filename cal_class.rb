@@ -261,6 +261,43 @@ end
         puts concatenated_strings_array[row]
       end
     end
+
+    ################ HARD CODING April - June ##########
+    #####
+    ###############################################
+    puts "\n"
+    months_string_arrays = []
+    month_index = 3
+    left_month = month_index
+    center_month = month_index + 1
+    right_month = center_month + 1
+
+      for i in left_month..right_month
+        months_string_arrays[i] = self.get_month_strings_array(i+1, year)
+      end
+
+    concatenated_strings_array = []
+
+    for row in 0..5
+      concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
+      puts concatenated_strings_array[row]
+    end
+
+    for row in 6..7
+      if !months_string_arrays[left_month][row].nil? or !months_string_arrays[center_month][row].nil? or !months_string_arrays[right_month][row].nil?
+        for month_index in left_month..right_month
+          if months_string_arrays[month_index][row].nil?
+            months_string_arrays[month_index][row] = "".ljust(20, " ")
+          end
+        end
+        concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
+        puts concatenated_strings_array[row]
+      end
+    end
+
+    ############### HARD CODE END###################
+    #####
+    ###############################################
   end
 
   def self.get_month_name(month_number)
