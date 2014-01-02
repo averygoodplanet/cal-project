@@ -565,23 +565,34 @@ class TestIntegration < MiniTest::Unit::TestCase
     assert_equal "26 27 28 29 30        24 25 26 27 28 29 30  28 29 30", shell_output.lines[16].chomp
     assert_equal "                      31                    ", shell_output.lines[17].chomp
   end
-  # def test_int33_yr_2012_line10
-  #   #blank line preceding months (e.g. before April May June line)
-  #   shell_output = ""
-  #   command_to_run = "ruby cal.rb 2012"
-  #   IO.popen(command_to_run, 'r+') do |pipe|
-  #     shell_output = pipe.read
-  #   end
-  #   assert_equal "" , shell_output.lines[9].chomp
-  # end
 
-  # def test_int33b_that_int33_matches_Unix_cal
-  #   #blank line preceding months (e.g. before April May June line)
-  #   shell_output = ""
-  #   command_to_run = "cal 2012"
-  #   IO.popen(command_to_run, 'r+') do |pipe|
-  #     shell_output = pipe.read
-  #   end
-  #   assert_equal "                                            " , shell_output.lines[9].chomp
-  # end
+  def test_int36_no_spacer_after_quarter_if_six_week_rows
+    shell_output = ""
+    command_to_run = "ruby cal.rb 2013"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    assert_equal "                                            31", shell_output.lines[9].chomp
+    assert_equal "       April                  May                   June", shell_output.lines[10].chomp
+    assert_equal "                                            30", shell_output.lines[17].chomp
+    assert_equal "        July                 August              September", shell_output.lines[18].chomp
+    assert_equal "28 29 30 31           25 26 27 28 29 30 31  29 30", shell_output.lines[24].chomp
+    assert_equal "                                            ", shell_output.lines[25].chomp
+    assert_equal "      October               November              December", shell_output.lines[26].chomp
+  end
+
+  def test_int36b_that_int36_matches_Unix_cal
+    shell_output = ""
+    command_to_run = "cal 2013"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    assert_equal "                                            31", shell_output.lines[9].chomp
+    assert_equal "       April                  May                   June", shell_output.lines[10].chomp
+    assert_equal "                                            30", shell_output.lines[17].chomp
+    assert_equal "        July                 August              September", shell_output.lines[18].chomp
+    assert_equal "28 29 30 31           25 26 27 28 29 30 31  29 30", shell_output.lines[24].chomp
+    assert_equal "                                            ", shell_output.lines[25].chomp
+    assert_equal "      October               November              December", shell_output.lines[26].chomp
+  end
 end
