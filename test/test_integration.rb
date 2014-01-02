@@ -577,7 +577,7 @@ class TestIntegration < MiniTest::Unit::TestCase
     assert_equal "                                            30", shell_output.lines[17].chomp
     assert_equal "        July                 August              September", shell_output.lines[18].chomp
     assert_equal "28 29 30 31           25 26 27 28 29 30 31  29 30", shell_output.lines[24].chomp
-    assert_equal "                                            ", shell_output.lines[25].chomp
+    assert_equal "", shell_output.lines[25].chomp
     assert_equal "      October               November              December", shell_output.lines[26].chomp
   end
 

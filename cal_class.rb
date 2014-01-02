@@ -232,10 +232,16 @@ end
   def self.display_year(year)
     puts "                             #{year}"
 
+    # handles edge case where we don't place a spacer row after quarter year if contains a month with six week rows
+    six_weeks_row = false
+
     for quarter_of_year in [0, 3, 6, 9]
       month_index = quarter_of_year
       #for each trimester
-      puts "\n"
+      if !six_weeks_row
+        puts "\n"
+      end
+      six_weeks_row = false
       months_string_arrays = []
       left_month = month_index
       center_month = month_index + 1
@@ -255,6 +261,9 @@ end
       # Handle edge cases where a month has only four (4) or has six (6) week rows
       for row in 6..7
         if !months_string_arrays[left_month][row].nil? or !months_string_arrays[center_month][row].nil? or !months_string_arrays[right_month][row].nil?
+          if row == 7
+            six_weeks_row = true
+          end
           for month_index in left_month..right_month
             if months_string_arrays[month_index][row].nil?
               months_string_arrays[month_index][row] = "".ljust(20, " ")
