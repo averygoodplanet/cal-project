@@ -244,21 +244,21 @@ end
 
     concatenated_strings_array = []
 
-    for i in 0..5
-      concatenated_strings_array[i] = months_string_arrays[0][i].ljust(20, " ").chomp + "  " + months_string_arrays[1][i].ljust(20, " ").chomp + "  " + months_string_arrays[2][i].ljust(20, " ").sub(/\s+\Z/, "")
-      puts concatenated_strings_array[i]
+    for row in 0..5
+      concatenated_strings_array[row] = months_string_arrays[0][row].ljust(20, " ").chomp + "  " + months_string_arrays[1][row].ljust(20, " ").chomp + "  " + months_string_arrays[2][row].ljust(20, " ").sub(/\s+\Z/, "")
+      puts concatenated_strings_array[row]
     end
 
     # Handle edge cases where a month has only four (4) or has six (6) week rows.
-    for p in 6..7
-      if !months_string_arrays[0][p].nil? or !months_string_arrays[1][p].nil? or !months_string_arrays[2][p].nil?
-        for r in 0..2
-          if months_string_arrays[r][p].nil?
-            months_string_arrays[r][p] = "".ljust(20, " ")
+    for row in 6..7
+      if !months_string_arrays[0][row].nil? or !months_string_arrays[1][row].nil? or !months_string_arrays[2][row].nil?
+        for month_index in 0..2
+          if months_string_arrays[month_index][row].nil?
+            months_string_arrays[month_index][row] = "".ljust(20, " ")
           end
         end
-        concatenated_strings_array[p] = months_string_arrays[0][p].ljust(20, " ").chomp + "  " + months_string_arrays[1][p].ljust(20, " ").chomp + "  " + months_string_arrays[2][p].ljust(20, " ").sub(/\s+\Z/, "")
-        puts concatenated_strings_array[p]
+        concatenated_strings_array[row] = months_string_arrays[0][row].ljust(20, " ").chomp + "  " + months_string_arrays[1][row].ljust(20, " ").chomp + "  " + months_string_arrays[2][row].ljust(20, " ").sub(/\s+\Z/, "")
+        puts concatenated_strings_array[row]
       end
     end
   end
