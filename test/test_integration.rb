@@ -595,4 +595,14 @@ class TestIntegration < MiniTest::Unit::TestCase
     assert_equal "                                            ", shell_output.lines[25].chomp
     assert_equal "      October               November              December", shell_output.lines[26].chomp
   end
+
+  def test_int37_date_scope
+    shell_output = ""
+    command_to_run = "ruby cal.rb 3001"
+    IO.popen(command_to_run, 'r+') do |pipe|
+      shell_output = pipe.read
+    end
+    expected_output = "Date is out-of-scope (years 1800-3000)."
+    assert_equal expected_output, shell_output.chomp
+  end
 end

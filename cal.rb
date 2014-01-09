@@ -5,12 +5,18 @@ require_relative 'cal_class.rb'
 first_argument = ARGV[0].to_i
 second_argument = ARGV[1].to_i
 
-# puts "#{month} #{year}"
-
 if ARGV.length == 2
-  Cal.display_month(first_argument, second_argument)
+  if second_argument > 3000 || second_argument < 1800
+    puts "Date is out-of-scope (years 1800-3000)."
+  else
+    Cal.display_month(first_argument, second_argument)
+  end
 else
-  Cal.display_year(first_argument)
+  if first_argument > 3000 || first_argument < 1800
+    puts "Date is out-of-scope (years 1800-3000)."
+  else
+    Cal.display_year(first_argument)
+  end
 end
 
 # Example for Future Reference

@@ -45,12 +45,7 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal "Saturday", Cal.zeller(12, 2012)
   end
 
-  def test_5_zeller_out_of_scope
-    assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(1, 3001)
-    assert_equal "Date is out-of-scope (years 1800-3000).", Cal.zeller(12, 1799)
-  end
-
-  def test_6_number_of_days_in_month_not_February
+  def test_5_number_of_days_in_month_not_February
     assert_equal 31, Cal.number_of_days_in_month(1, 2012)
     assert_equal 31, Cal.number_of_days_in_month(3, 2012)
     assert_equal 30, Cal.number_of_days_in_month(4, 2012)
@@ -64,11 +59,11 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal 31, Cal.number_of_days_in_month(12, 2012)
   end
 
-  def test_7_get_month_name
+  def test_6_get_month_name
     assert_equal "January", Cal.get_month_name(1)
   end
 
-  def test_8_leap_year_checks
+  def test_7_leap_year_checks
     # check century years that aren't multiples of 400
     assert_equal false, Cal.leap_year?(1700)
     assert_equal false, Cal.leap_year?(1800)
@@ -86,7 +81,7 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal false, Cal.leap_year?(1891)
   end
 
-  def test_9_number_of_days_in_month_February
+  def test_8_number_of_days_in_month_February
     assert_equal 29, Cal.number_of_days_in_month(2, 2000)
     assert_equal 28, Cal.number_of_days_in_month(2, 2001)
     assert_equal 29, Cal.number_of_days_in_month(2, 2004)
@@ -94,7 +89,7 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal 28, Cal.number_of_days_in_month(2, 2005)
   end
 
-  def test_10_months_string_arrays_1st_trimester_2013
+  def test_9_months_string_arrays_1st_trimester_2013
     expected = [ ["      January       ",
                           "Su Mo Tu We Th Fr Sa",
                           "       1  2  3  4  5",
