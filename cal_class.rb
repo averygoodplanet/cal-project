@@ -249,7 +249,9 @@ end
       concatenated_strings_array = []
 
       for row in 0..5
-        concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
+        concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " +
+                                                                    months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " +
+                                                                    months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
         puts concatenated_strings_array[row]
       end
 
@@ -264,7 +266,9 @@ end
               months_string_arrays[month_index][row] = "".ljust(20, " ")
             end
           end
-          concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " + months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
+          concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " +
+                                                                      months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " +
+                                                                      months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
           puts concatenated_strings_array[row]
         end
       end
@@ -273,7 +277,8 @@ end
   end
 
   def self.get_month_name(month_number)
-    month_name_hash = { 1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"}
+    month_name_hash = { 1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August",
+                                         9 => "September", 10 => "October", 11 => "November", 12 => "December"}
     month_name_hash[month_number]
   end
 
