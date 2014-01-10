@@ -1,21 +1,18 @@
-# example of a file defining a class which
-# then can have unit testing ran on it
-
 class Cal
-  # def initialize
-  # end
-  def self.zeller(month, year, result_format=:full)
+
+  def self.zeller(month, year, result_format=:zeller_index)
     # uses Zeller Congruence for Gregorian (modern) Calendar formula to return
     # the day-of-week a month-year starts on
     # see http://en.wikipedia.org/wiki/Zeller's_congruence
     # see formulas under "Implementation in software"
 
-    #assign variables to be used within the Zeller equation
     first_day_of_month = 1
     day_of_month = first_day_of_month
+    months_in_a_year = 12
 
+    # in Zeller's Congruence formula months are numbered: (3 = March, 4 = April, 5 = May, ..., 14 = February)
     if month <= 2
-      zeller_month = month + 12
+      zeller_month = month + months_in_a_year
       year = year - 1
     else
       zeller_month = month
@@ -23,10 +20,9 @@ class Cal
 
     zeller_day_of_week_index = (day_of_month + (((zeller_month + 1) * 26)/ 10) + year + (year/4).floor + (6 * ((year/100).floor)) + (year/400).floor) % 7
 
-    # return results in format designated by result_format
-    if result_format == :full
-      zeller_days_hash = { 0 => "Saturday", 1 => "Sunday", 2 => "Monday", 3 => "Tuesday", 4 => "Wednesday", 5 => "Thursday", 6 => "Friday"}
-      zeller_days_hash[zeller_day_of_week_index]
+    if result_format == :weekday_string
+      zeller_index_to_weekday_hash = { 0 => "Saturday", 1 => "Sunday", 2 => "Monday", 3 => "Tuesday", 4 => "Wednesday", 5 => "Thursday", 6 => "Friday"}
+      zeller_index_to_weekday_hash[zeller_day_of_week_index]
     elsif result_format == :zeller_index
       zeller_day_of_week_index
     else

@@ -6,6 +6,9 @@ first_argument = ARGV[0].to_i
 second_argument = ARGV[1].to_i
 last_argument = ARGV[ARGV.length - 1].to_i
 
+# last_argument will always be the year
+# whether the there is one (1) argument "ruby cal.rb 2012"
+# or there are two (2) arguments "ruby cal.rb 2 2012"
 if last_argument > 3000 || last_argument < 1800
   puts "Date is out-of-scope (years 1800-3000)."
 else

@@ -16,33 +16,33 @@ class TestCalClass < MiniTest::Unit::TestCase
   def test_2_zeller_base_case
     # assert_equal "Sunday", Cal.zeller(1, 2012)
     assert_equal 1, Cal.zeller(1, 2012, :zeller_index)
-    assert_equal "Sunday", Cal.zeller(1, 2012)
+    assert_equal "Sunday", Cal.zeller(1, 2012, :weekday_string)
     assert_equal 4, Cal.zeller(2, 2012, :zeller_index)
     assert_equal 3, Cal.zeller(2, 2000, :zeller_index)
   end
 
   def test_3_zeller_edge_cases
-    assert_equal "Wednesday", Cal.zeller(2, 2012)
-    assert_equal "Saturday", Cal.zeller(9, 2012)
-    assert_equal "Saturday", Cal.zeller(2, 2014)
-    assert_equal "Sunday", Cal.zeller(2, 2015)
-    assert_equal "Thursday", Cal.zeller(2, 1900)
-    assert_equal "Tuesday", Cal.zeller(2, 2000)
+    assert_equal "Wednesday", Cal.zeller(2, 2012, :weekday_string)
+    assert_equal "Saturday", Cal.zeller(9, 2012, :weekday_string)
+    assert_equal "Saturday", Cal.zeller(2, 2014, :weekday_string)
+    assert_equal "Sunday", Cal.zeller(2, 2015, :weekday_string)
+    assert_equal "Thursday", Cal.zeller(2, 1900, :weekday_string)
+    assert_equal "Tuesday", Cal.zeller(2, 2000, :weekday_string)
   end
 
   def test_4_zeller_2012_months
-    assert_equal "Sunday", Cal.zeller(1, 2012)
-    assert_equal "Wednesday", Cal.zeller(2, 2012)
-    assert_equal "Thursday", Cal.zeller(3, 2012)
-    assert_equal "Sunday", Cal.zeller(4, 2012)
-    assert_equal "Tuesday", Cal.zeller(5, 2012)
-    assert_equal "Friday", Cal.zeller(6, 2012)
-    assert_equal "Sunday", Cal.zeller(7, 2012)
-    assert_equal "Wednesday", Cal.zeller(8, 2012)
-    assert_equal "Saturday", Cal.zeller(9, 2012)
-    assert_equal "Monday", Cal.zeller(10, 2012)
-    assert_equal "Thursday", Cal.zeller(11, 2012)
-    assert_equal "Saturday", Cal.zeller(12, 2012)
+    assert_equal "Sunday", Cal.zeller(1, 2012, :weekday_string)
+    assert_equal "Wednesday", Cal.zeller(2, 2012, :weekday_string)
+    assert_equal "Thursday", Cal.zeller(3, 2012, :weekday_string)
+    assert_equal "Sunday", Cal.zeller(4, 2012, :weekday_string)
+    assert_equal "Tuesday", Cal.zeller(5, 2012, :weekday_string)
+    assert_equal "Friday", Cal.zeller(6, 2012, :weekday_string)
+    assert_equal "Sunday", Cal.zeller(7, 2012, :weekday_string)
+    assert_equal "Wednesday", Cal.zeller(8, 2012, :weekday_string)
+    assert_equal "Saturday", Cal.zeller(9, 2012, :weekday_string)
+    assert_equal "Monday", Cal.zeller(10, 2012, :weekday_string)
+    assert_equal "Thursday", Cal.zeller(11, 2012, :weekday_string)
+    assert_equal "Saturday", Cal.zeller(12, 2012, :weekday_string)
   end
 
   def test_5_number_of_days_in_month_not_February
