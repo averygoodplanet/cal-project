@@ -3,11 +3,8 @@ class Cal
   def self.zeller(month, year, result_format=:zeller_index)
     # uses Zeller Congruence for Gregorian (modern) Calendar formula to return
     # the day-of-week a month-year starts on
-    # see http://en.wikipedia.org/wiki/Zeller's_congruence
-    # see formulas under "Implementation in software"
-
-    first_day_of_month = 1
-    day_of_month = first_day_of_month
+    # see http://en.wikipedia.org/wiki/Zeller's_congruence, formulas under "Implementation in software"
+    day_of_month = first_day_of_month = 1
     months_in_a_year = 12
 
     # in Zeller's Congruence formula months are numbered: (3 = March, 4 = April, 5 = May, ..., 14 = February)
@@ -53,10 +50,7 @@ class Cal
     first_day_of_month = 7 if first_day_of_month == 0
 
     if first_day_of_month == 1
-      month_rows[2] = " 1  2  3  4  5  6  7"
-      month_rows[3] = " 8  9 10 11 12 13 14"
-      month_rows[4] = "15 16 17 18 19 20 21"
-      month_rows[5] = "22 23 24 25 26 27 28"
+      month_rows.push *[" 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14", "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"]
 
       if days_in_this_month == 31
         month_rows[6] = "29 30 31"
@@ -140,10 +134,7 @@ end
 
     week_rows = []
     if first_day_of_month == 1
-      week_rows[0] = " 1  2  3  4  5  6  7"
-      week_rows[1] = " 8  9 10 11 12 13 14"
-      week_rows[2] = "15 16 17 18 19 20 21"
-      week_rows[3] = "22 23 24 25 26 27 28"
+      week_rows.push *[" 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14", "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"]
 
       if days_in_this_month == 31
         week_rows[4] = "29 30 31"
@@ -219,15 +210,11 @@ end
 
       six_weeks_row = false
       months_string_arrays = []
-      left_month = month_index
-      center_month = month_index + 1
-      right_month = center_month + 1
+      left_month, center_month, right_month = month_index, month_index + 1, month_index + 2
 
         for i in left_month..right_month
           months_string_arrays[i] = self.get_month_strings_array(i+1, year)
         end
-
-      concatenated_strings_array = []
 
       for row in 0..5
         self.concatenate_and_puts(row, months_string_arrays, left_month, center_month, right_month)
