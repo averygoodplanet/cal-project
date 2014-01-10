@@ -28,7 +28,7 @@ class TestIntegration < MiniTest::Unit::TestCase
     IO.popen(command_to_run, 'r+') do |pipe|
       shell_output = pipe.read.chomp
     end
-    expected_output = "    January 2012"
+    expected_output = "    January 2012    "
     assert_equal expected_output, shell_output.lines[0].chomp
   end
 
@@ -175,7 +175,7 @@ class TestIntegration < MiniTest::Unit::TestCase
     IO.popen(command_to_run, 'r+') do |pipe|
       shell_output = pipe.read
     end
-    assert_equal "   February 2026", shell_output.lines[0].chomp
+    assert_equal "   February 2026    ", shell_output.lines[0].chomp
     assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
     assert_equal " 1  2  3  4  5  6  7", shell_output.lines[2].chomp
     assert_equal " 8  9 10 11 12 13 14", shell_output.lines[3].chomp
@@ -207,7 +207,7 @@ class TestIntegration < MiniTest::Unit::TestCase
     IO.popen(command_to_run, 'r+') do |pipe|
       shell_output = pipe.read
     end
-    assert_equal "   February 1880", shell_output.lines[0].chomp
+    assert_equal "   February 1880    ", shell_output.lines[0].chomp
     assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
     assert_equal " 1  2  3  4  5  6  7", shell_output.lines[2].chomp
     assert_equal " 8  9 10 11 12 13 14", shell_output.lines[3].chomp
@@ -223,7 +223,7 @@ class TestIntegration < MiniTest::Unit::TestCase
     IO.popen(command_to_run, 'r+') do |pipe|
       shell_output = pipe.read
     end
-    assert_equal "     June 2014", shell_output.lines[0].chomp
+    assert_equal "     June 2014      ", shell_output.lines[0].chomp
     assert_equal "Su Mo Tu We Th Fr Sa", shell_output.lines[1].chomp
     assert_equal " 1  2  3  4  5  6  7", shell_output.lines[2].chomp
     assert_equal " 8  9 10 11 12 13 14", shell_output.lines[3].chomp
@@ -438,7 +438,8 @@ class TestIntegration < MiniTest::Unit::TestCase
       shell_output = pipe.read
     end
     # puts "********\nshell_output: #{shell_output.lines}\n************\n"
-    assert_equal "      January               February               March",  shell_output.lines[2].chomp
+    assert_equal "      January               February               March",
+                          shell_output.lines[2].chomp
   end
 
   def test_int29b_that_int29_matches_Unix_cal
@@ -447,7 +448,8 @@ class TestIntegration < MiniTest::Unit::TestCase
     IO.popen(command_to_run, 'r+') do |pipe|
       shell_output = pipe.read
     end
-    assert_equal "      January               February               March", shell_output.lines[2].chomp
+    assert_equal "      January               February               March",
+                          shell_output.lines[2].chomp
   end
 
   def test_int30_yr_2012_line4
@@ -537,7 +539,8 @@ class TestIntegration < MiniTest::Unit::TestCase
     IO.popen(command_to_run, 'r+') do |pipe|
       shell_output = pipe.read
     end
-    assert_equal "25 26 27 28 29 30 31                        29 30 31", shell_output.lines[8].chomp
+    assert_equal "25 26 27 28 29 30 31                        29 30 31",
+      shell_output.lines[8].chomp
   end
 
   def test_int35_two_trimesters_2015
@@ -547,7 +550,8 @@ class TestIntegration < MiniTest::Unit::TestCase
       shell_output = pipe.read
     end
     assert_equal "", shell_output.lines[9].chomp
-    assert_equal "       April                  May                   June", shell_output.lines[10].chomp
+    assert_equal "       April                  May                   June",
+      shell_output.lines[10].chomp
     assert_equal "          1  2  3  4                  1  2      1  2  3  4  5  6", shell_output.lines[12].chomp
     assert_equal "26 27 28 29 30        24 25 26 27 28 29 30  28 29 30", shell_output.lines[16].chomp
     assert_equal "                      31                    ", shell_output.lines[17].chomp

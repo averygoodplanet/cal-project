@@ -21,7 +21,8 @@ class TestCalClass < MiniTest::Unit::TestCase
   end
 
 #Tests 3 and 4 were removed--they were for printing weekday name
-# of the first day of the month, which was an unnecessary feature that was removed.
+# of the first day of the month, which was an unnecessary feature
+# that was removed.
 
   def test_5_number_of_days_in_month_not_February
     assert_equal 31, Cal.number_of_days_in_month(1, 2012)
@@ -102,7 +103,8 @@ class TestCalClass < MiniTest::Unit::TestCase
     assert_equal 7, months_string_arrays[1].length
     # March 2013 should have 8 rows, [8 -2 =] 6 week rows
     assert_equal 8, months_string_arrays[2].length
-    # Should get nil if you call index of > (length - 1 (since indexes count from zero)) on January 2013 subarray?
+    # Should get nil if you call index of > (length - 1 (since indexes count
+    #from zero)) on January 2013 subarray?
     assert_equal true, months_string_arrays[0][7].nil?
     assert_equal false, months_string_arrays[0][6].nil?
   end
