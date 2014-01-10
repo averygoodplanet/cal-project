@@ -279,24 +279,13 @@ end
   end
 
   def self.leap_year?(year)
-    if year % 4 == 0
-      if year % 100 == 0
-        if year % 400 == 0
-          # century years which are multiples of 400
-          # e.g. 1600, 2000, are leap years
-          return true
-        else
-          # century years which aren't multiples of 400
-          # aren't leap years (e.g. 1700, 1800, 1900)
-          return false
-        end
-      else
-        # a year that is divisible by 4 and isn't a century year
-        # is a leap year
-        return true
-      end
+    multiple_of_4 = ((year % 4) == 0)
+    century = ((year % 100) == 0)
+    multiple_of_400 = ((year % 400) == 0)
+
+    if (multiple_of_4 and !century) or (multiple_of_4 and century and multiple_of_400)
+      return true
     else
-      # a year that isn't a multiple of 4 isn't a leap year
       return false
     end
   end
@@ -304,10 +293,11 @@ end
   def self.number_of_days_in_month(month, year)
     # the days in a month are determined solely by the month, except for February which changes in leap year
     month_days_hash = { 1 => 31, 2 => "February", 3 => 31, 4 => 30, 5 => 31, 6 => 30, 7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31}
+
     if month_days_hash[month] != "February"
       this_month_number_days = month_days_hash[month]
     else
-      # if February determine whether leap year (e.g. whether 28 or 29 days)
+      # if February, determine whether leap year (e.g. whether 28 or 29 days)
       if Cal.leap_year?(year)
         this_month_number_days = 29
       else
@@ -315,6 +305,4 @@ end
       end
     end
   end
-
-#this should be the end statement for the Class
 end
