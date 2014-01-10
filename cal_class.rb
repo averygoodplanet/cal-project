@@ -245,10 +245,7 @@ end
       concatenated_strings_array = []
 
       for row in 0..5
-        concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " +
-                                                                    months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " +
-                                                                    months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
-        puts concatenated_strings_array[row]
+        self.concatenate_and_puts(row, months_string_arrays, left_month, center_month, right_month)
       end
 
       # Handle edge cases where a month has only four (4) or has six (6) week rows
@@ -262,14 +259,19 @@ end
               months_string_arrays[month_index][row] = "".ljust(20, " ")
             end
           end
-          concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " +
-                                                                      months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " +
-                                                                      months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
-          puts concatenated_strings_array[row]
+          self.concatenate_and_puts(row, months_string_arrays, left_month, center_month, right_month)
         end
       end
     end
     puts "\n"
+  end
+
+  def self.concatenate_and_puts(row, months_string_arrays, left_month, center_month, right_month)
+    concatenated_strings_array = []
+    concatenated_strings_array[row] = months_string_arrays[left_month][row].ljust(20, " ").chomp + "  " +
+                                                                months_string_arrays[center_month][row].ljust(20, " ").chomp + "  " +
+                                                                months_string_arrays[right_month][row].ljust(20, " ").sub(/\s+\Z/, "")
+    puts concatenated_strings_array[row]
   end
 
   def self.get_month_name(month_number)
