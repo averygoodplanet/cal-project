@@ -111,24 +111,13 @@ class Cal
 end
 
   def self.display_month(month_number, year_number)
-    month_name = Cal.get_month_name(month_number)
-    month_space_year = month_name + " " + year_number.to_s
-
-    leading_whitespace = ""
     leading_spaces_by_month = { 1 => 4, 2 => 3, 3 => 5, 4 => 5, 5 => 6,  6 => 5, 7 => 5, 8 => 4, 9 => 3, 10 => 4, 11 => 3, 12 => 3}
     number_of_leading_spaces = leading_spaces_by_month[month_number]
-    for i in 1..number_of_leading_spaces
-      leading_whitespace += " "
-    end
 
-    month_header_string = leading_whitespace + month_space_year
-    puts month_header_string
-
-    weekday_names_row = "Su Mo Tu We Th Fr Sa"
-    puts weekday_names_row
+    puts " " * number_of_leading_spaces + Cal.get_month_name(month_number) + " " + year_number.to_s
+    puts "Su Mo Tu We Th Fr Sa"
 
     days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
-    # get zeller to determine which day of week month starts on
     first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
     first_day_of_month = 7 if first_day_of_month == 0
 
