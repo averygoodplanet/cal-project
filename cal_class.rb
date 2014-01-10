@@ -266,26 +266,16 @@ end
     century = ((year % 100) == 0)
     multiple_of_400 = ((year % 400) == 0)
 
-    if (multiple_of_4 and !century) or (multiple_of_4 and century and multiple_of_400)
-      return true
-    else
-      return false
-    end
+    (multiple_of_4 and !century) or (multiple_of_4 and century and multiple_of_400) ? true : false
   end
 
   def self.number_of_days_in_month(month, year)
-    # the days in a month are determined solely by the month, except for February which changes in leap year
     month_days_hash = { 1 => 31, 2 => "February", 3 => 31, 4 => 30, 5 => 31, 6 => 30, 7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31}
 
     if month_days_hash[month] != "February"
       this_month_number_days = month_days_hash[month]
     else
-      # if February, determine whether leap year (e.g. whether 28 or 29 days)
-      if Cal.leap_year?(year)
-        this_month_number_days = 29
-      else
-        this_month_number_days = 28
-      end
+      Cal.leap_year?(year) ? this_month_number_days = 29 : this_month_number_days = 28
     end
   end
 end
