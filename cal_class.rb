@@ -125,18 +125,18 @@ end
     if first_day_of_month == 1
       week_rows.push *[" 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14", "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"]
 
-      if days_in_this_month == 31
+      case days_in_this_month
+      when 31
         week_rows[4] = "29 30 31"
-      elsif days_in_this_month == 30
+      when 30
         week_rows[4] = "29 30"
-      elsif days_in_this_month == 29
+      when 29
         week_rows[4] = "29"
-      else
       end
+
     else
       week_rows[0] = ""
 
-      # make first row's leading spaces (3 spaces per grouping)
       for i in 1..(first_day_of_month - 1)
         week_rows[0] += "   "
       end
@@ -179,11 +179,9 @@ end
         end
         week_rows.push(last_week_array.join(" "))
       end
-  end
-
-    for i in 0..week_rows.length
-      puts week_rows[i]
     end
+
+    puts week_rows, "\n"
   end
 
   def self.display_year(year)
