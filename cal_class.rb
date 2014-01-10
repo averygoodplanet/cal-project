@@ -41,7 +41,6 @@ class Cal
       leading_whitespace += " "
     end
 
-
     month_header_string = month_name.center(20)
     weekday_names_row = "Su Mo Tu We Th Fr Sa"
 
@@ -50,15 +49,8 @@ class Cal
     month_rows[1] = weekday_names_row
 
     days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
-    # get zeller to determine which day of week month starts on
     first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
-    if first_day_of_month == 0
-      first_day_of_month = 7
-    end
-    # construct first row (account for day of week starting on, leading white spaces )
-    # will probably have to account for 1space-singledigit-1space, vs. doubledigit-1space
-    # construct middle rows (account for next start day...)
-    # construct last row (account for number of days in month e.g. 28, 29, 30, 31)
+    first_day_of_month = 7 if first_day_of_month == 0
 
     if first_day_of_month == 1
       month_rows[2] = " 1  2  3  4  5  6  7"
@@ -144,13 +136,7 @@ end
     days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
     # get zeller to determine which day of week month starts on
     first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
-    if first_day_of_month == 0
-      first_day_of_month = 7
-    end
-    # construct first row (account for day of week starting on, leading white spaces )
-    # will probably have to account for 1space-singledigit-1space, vs. doubledigit-1space
-    # construct middle rows (account for next start day...)
-    # construct last row (account for number of days in month e.g. 28, 29, 30, 31)
+    first_day_of_month = 7 if first_day_of_month == 0
 
     week_rows = []
     if first_day_of_month == 1
@@ -229,9 +215,8 @@ end
     for quarter_of_year in [0, 3, 6, 9]
       month_index = quarter_of_year
       #for each trimester
-      if !six_weeks_row
-        puts "\n"
-      end
+      puts "\n" if !six_weeks_row
+
       six_weeks_row = false
       months_string_arrays = []
       left_month = month_index
@@ -251,13 +236,9 @@ end
       # Handle edge cases where a month has only four (4) or has six (6) week rows
       for row in 6..7
         if !months_string_arrays[left_month][row].nil? or !months_string_arrays[center_month][row].nil? or !months_string_arrays[right_month][row].nil?
-          if row == 7
-            six_weeks_row = true
-          end
+          six_weeks_row = true if row == 7
           for month_index in left_month..right_month
-            if months_string_arrays[month_index][row].nil?
-              months_string_arrays[month_index][row] = "".ljust(20, " ")
-            end
+            months_string_arrays[month_index][row] = "".ljust(20, " ") if months_string_arrays[month_index][row].nil?
           end
           self.concatenate_and_puts(row, months_string_arrays, left_month, center_month, right_month)
         end
