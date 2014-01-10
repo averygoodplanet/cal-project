@@ -1,30 +1,20 @@
 class Cal
 
-  def self.zeller(month, year, result_format=:zeller_index)
+  def self.zeller(month, year)
     # uses Zeller Congruence for Gregorian (modern) Calendar formula to return
     # the day-of-week a month-year starts on
     # see http://en.wikipedia.org/wiki/Zeller's_congruence, formulas under "Implementation in software"
-    day_of_month = first_day_of_month = 1
-    months_in_a_year = 12
 
     # in Zeller's Congruence formula months are numbered: (3 = March, 4 = April, 5 = May, ..., 14 = February)
     if month <= 2
+      months_in_a_year = 12
       zeller_month = month + months_in_a_year
       year = year - 1
     else
       zeller_month = month
     end
 
-    zeller_day_of_week_index = (day_of_month + (((zeller_month + 1) * 26)/ 10) + year + (year/4).floor + (6 * ((year/100).floor)) + (year/400).floor) % 7
-
-    if result_format == :weekday_string
-      zeller_index_to_weekday_hash = { 0 => "Saturday", 1 => "Sunday", 2 => "Monday", 3 => "Tuesday", 4 => "Wednesday", 5 => "Thursday", 6 => "Friday"}
-      zeller_index_to_weekday_hash[zeller_day_of_week_index]
-    elsif result_format == :zeller_index
-      zeller_day_of_week_index
-    else
-      raise Error, "Specify result_format in call to Cal.zeller"
-    end
+    zeller_day_of_week_index = (1 + (((zeller_month + 1) * 26)/ 10) + year + (year/4).floor + (6 * ((year/100).floor)) + (year/400).floor) % 7
   end
 
   def self.get_month_strings_array(month_number, year_number)
@@ -46,7 +36,7 @@ class Cal
     month_rows[1] = weekday_names_row
 
     days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
-    first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
+    first_day_of_month = Cal.zeller(month_number, year_number)
     first_day_of_month = 7 if first_day_of_month == 0
 
     if first_day_of_month == 1
@@ -118,7 +108,7 @@ end
     puts "Su Mo Tu We Th Fr Sa"
 
     days_in_this_month = Cal.number_of_days_in_month(month_number, year_number)
-    first_day_of_month = Cal.zeller(month_number, year_number, :zeller_index)
+    first_day_of_month = Cal.zeller(month_number, year_number)
     first_day_of_month = 7 if first_day_of_month == 0
 
     week_rows = []
