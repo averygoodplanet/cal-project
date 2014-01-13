@@ -118,19 +118,9 @@ end
     first_day_of_month = 7 if first_day_of_month == 0
 
     week_rows = []
+    #  week_rows = Cal.Sunday_starting_month()
     if first_day_of_month == 1
-      week_rows.push *[" 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14",
-                                    "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"]
-
-      case days_in_this_month
-      when 31
-        week_rows[4] = "29 30 31"
-      when 30
-        week_rows[4] = "29 30"
-      when 29
-        week_rows[4] = "29"
-      end
-
+      week_rows = Cal.Sunday_starting_month(days_in_this_month)
     else
       week_rows[0] = ""
 
@@ -237,6 +227,22 @@ end
           4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August",
           9 => "September", 10 => "October", 11 => "November", 12 => "December"}
     month_name_hash[month_number]
+  end
+
+  def self.Sunday_starting_month(days_in_this_month)
+    week_rows = []
+    week_rows.push *[" 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14",
+                                  "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"]
+
+    case days_in_this_month
+    when 31
+      week_rows[4] = "29 30 31"
+    when 30
+      week_rows[4] = "29 30"
+    when 29
+      week_rows[4] = "29"
+    end
+    week_rows
   end
 
   def self.leap_year?(year)
