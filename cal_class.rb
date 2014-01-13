@@ -21,7 +21,7 @@ class Cal
                                                      (year/400).floor) % 7
   end
 
-  def self.get_month_strings_array_without_year_header(month_number, year_number)
+  def self.get_month_strings_no_headers(month_number, year_number)
     days_in_this_month = Cal.number_of_days_in_month(month_number,
                                          year_number)
     first_day_of_month = Cal.zeller(month_number, year_number)
@@ -34,29 +34,19 @@ class Cal
       last_number_in_first_row, days_in_this_month)
     week_rows = Cal.add_month_partial_last_row(week_rows,last_number_middle_rows,
      days_in_this_month) if last_number_middle_rows < days_in_this_month
+    week_rows
+  end
 
+  def self.get_month_strings_array_without_year_header(month_number, year_number)
+    week_rows = Cal.get_month_strings_no_headers(month_number, year_number)
     week_rows.unshift( Cal.get_month_name(month_number).center(20),
               "Su Mo Tu We Th Fr Sa")
   end
 
   def self.display_month(month_number, year_number)
-    days_in_this_month = Cal.number_of_days_in_month(month_number,
-                                         year_number)
-    first_day_of_month = Cal.zeller(month_number, year_number)
-    first_day_of_month = 7 if first_day_of_month == 0
-    last_number_in_first_row = 7 - (first_day_of_month - 1)
-
-    week_rows = []
-    week_rows[0] = Cal.make_month_first_row(first_day_of_month, last_number_in_first_row)
-    week_rows, last_number_middle_rows = Cal.add_month_middle_rows(week_rows,
-      last_number_in_first_row, days_in_this_month)
-    week_rows = Cal.add_month_partial_last_row(week_rows,last_number_middle_rows,
-     days_in_this_month) if last_number_middle_rows < days_in_this_month
-
+    week_rows = Cal.get_month_strings_no_headers(month_number, year_number)
     puts (Cal.get_month_name(month_number) +  " " + year_number.to_s).center(20),
               "Su Mo Tu We Th Fr Sa", week_rows, "\n"
-    # month_strings = Cal.get_month_strings_array(month_number, year_number)
-    # puts month_strings
   end
 
   def self.display_year(year)
