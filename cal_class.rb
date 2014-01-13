@@ -119,32 +119,12 @@ end
     last_number_in_first_row = 7 - (first_day_of_month - 1)
 
     week_rows = []
-    #  week_rows = Cal.Sunday_starting_month()
     if first_day_of_month == 1
       week_rows = Cal.Sunday_starting_month(days_in_this_month)
     else
       week_rows[0] = Cal.make_month_first_row(first_day_of_month, last_number_in_first_row)
-
-      # make middle full rows in month
-      current_week_row = 1
-      first_in_row = last_number_in_first_row + 1
-      last_number_middle_rows = 0
-      while (first_in_row + 6) <= days_in_this_month do
-        week_string = ""
-        for i in first_in_row..(first_in_row + 6)
-            if i < 10
-              number_string = " " + i.to_s
-           else
-              number_string = i.to_s
-           end
-          week_string += number_string + " "
-          last_number_middle_rows = number_string.to_i
-        end
-        week_string = week_string.chop
-        week_rows[current_week_row] = week_string
-        current_week_row += 1
-        first_in_row += 7
-      end
+      week_rows, last_number_middle_rows = Cal.add_month_middle_rows(week_rows,
+        last_number_in_first_row, days_in_this_month)
 
       #make less-than-full ending row
       if last_number_middle_rows < days_in_this_month
@@ -262,5 +242,29 @@ end
     end
 
     week_rows[0] = week_rows[0].chop
+  end
+
+  def Cal.add_month_middle_rows(week_rows,
+        last_number_in_first_row, days_in_this_month)
+  current_week_row = 1
+  first_in_row = last_number_in_first_row + 1
+  last_number_middle_rows = 0
+    while (first_in_row + 6) <= days_in_this_month do
+      week_string = ""
+      for i in first_in_row..(first_in_row + 6)
+          if i < 10
+            number_string = " " + i.to_s
+         else
+            number_string = i.to_s
+         end
+        week_string += number_string + " "
+        last_number_middle_rows = number_string.to_i
+      end
+      week_string = week_string.chop
+      week_rows[current_week_row] = week_string
+      current_week_row += 1
+      first_in_row += 7
+    end
+    return week_rows, last_number_middle_rows
   end
 end
