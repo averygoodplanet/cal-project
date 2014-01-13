@@ -21,7 +21,7 @@ class Cal
                                                      (year/400).floor) % 7
   end
 
-  def self.get_month_strings_array(month_number, year_number)
+  def self.get_month_strings_array_without_year_header(month_number, year_number)
     days_in_this_month = Cal.number_of_days_in_month(month_number,
                                          year_number)
     first_day_of_month = Cal.zeller(month_number, year_number)
@@ -55,6 +55,8 @@ class Cal
 
     puts (Cal.get_month_name(month_number) +  " " + year_number.to_s).center(20),
               "Su Mo Tu We Th Fr Sa", week_rows, "\n"
+    # month_strings = Cal.get_month_strings_array(month_number, year_number)
+    # puts month_strings
   end
 
   def self.display_year(year)
@@ -74,7 +76,7 @@ class Cal
       left_month, center_month, right_month = q, q + 1, q + 2
 
         for i in left_month..right_month
-          month_strings[i] = self.get_month_strings_array(i+1, year)
+          month_strings[i] = self.get_month_strings_array_without_year_header(i+1, year)
         end
 
       for row in 0..5

@@ -94,7 +94,7 @@ class TestCalClass < MiniTest::Unit::TestCase
     months_string_arrays = []
     for i in 0..2
       # e.g. January's row strings are stored in month_string_arrays[0]
-      months_string_arrays[i] = Cal.get_month_strings_array(i+1, 2013)
+      months_string_arrays[i] = Cal.get_month_strings_array_without_year_header(i+1, 2013)
     end
     assert_equal expected, months_string_arrays
     # January 2013 should have 7 rows,  [7-2 =] 5 week rows
