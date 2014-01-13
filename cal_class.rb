@@ -116,28 +116,17 @@ end
                                          year_number)
     first_day_of_month = Cal.zeller(month_number, year_number)
     first_day_of_month = 7 if first_day_of_month == 0
+    last_number_in_first_row = 7 - (first_day_of_month - 1)
 
     week_rows = []
     #  week_rows = Cal.Sunday_starting_month()
     if first_day_of_month == 1
       week_rows = Cal.Sunday_starting_month(days_in_this_month)
     else
-      week_rows[0] = ""
-
-      for i in 1..(first_day_of_month - 1)
-        week_rows[0] += "   "
-      end
-
-      last_number_in_first_row = 7 - (first_day_of_month -1)
-
-      for i in 1..last_number_in_first_row
-        week_rows[0] += " #{i} "
-      end
-
-      week_rows[0] = week_rows[0].chop
-      current_week_row = 1
+      week_rows[0] = Cal.make_month_first_row(first_day_of_month, last_number_in_first_row)
 
       # make middle full rows in month
+      current_week_row = 1
       first_in_row = last_number_in_first_row + 1
       last_number_middle_rows = 0
       while (first_in_row + 6) <= days_in_this_month do
@@ -262,5 +251,16 @@ end
     else
       Cal.leap_year?(year) ? num_days = 29 : num_days = 28
     end
+  end
+
+  def self.make_month_first_row(first_day_of_month, last_number_in_first_row)
+    week_rows = []
+    week_rows[0] = (" " * 3) * (first_day_of_month - 1)
+
+    for i in 1..last_number_in_first_row
+      week_rows[0] += " #{i} "
+    end
+
+    week_rows[0] = week_rows[0].chop
   end
 end
