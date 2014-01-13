@@ -184,22 +184,6 @@ end
     month_name_hash[month_number]
   end
 
-  def self.Sunday_starting_month(days_in_this_month)
-    week_rows = []
-    week_rows.push *[" 1  2  3  4  5  6  7", " 8  9 10 11 12 13 14",
-                                  "15 16 17 18 19 20 21", "22 23 24 25 26 27 28"]
-
-    case days_in_this_month
-    when 31
-      week_rows[4] = "29 30 31"
-    when 30
-      week_rows[4] = "29 30"
-    when 29
-      week_rows[4] = "29"
-    end
-    week_rows
-  end
-
   def self.leap_year?(year)
     mult_4 = ((year % 4) == 0)
     century = ((year % 100) == 0)
